@@ -24,16 +24,13 @@ app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 /*
  * JSON API Endpoints
  */
 
-app.get('/api/albums', controllers.albums.index);
-app.get('/api/albums/:albumId', controllers.albums.show);
-app.post('/api/albums', controllers.albums.create);
-app.delete('/api/albums/:albumId', controllers.albums.destroy);
-app.post('/api/albums/:albumId/songs', controllers.albumsSongs.create);
+
+app.get('/api/restroom', controllers.restroom.index);
+
 
 
 /**********

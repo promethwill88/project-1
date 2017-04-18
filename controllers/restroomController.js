@@ -4,32 +4,37 @@
 
 var db = require('../models');
 
-// GET /api/holidays
+// GET /api/cities
 function index(req, res) {
-  // send back all holidays as JSON
-  db.Holiday.find({}, function(err, allHolidays) {
-    res.json(allHolidays);
-  });
-}
 
-// POST /api/holidays
+db.Restroom.find({}, function(err, allRestrooms){
+ 
+  // db.Restroom.find({}, function(err, allRestroom) {
+     if(err){
+    throw err;
+  } else {
+      res.json(allRestrooms)
+  }
+})
+}
+// POST /api/cities
 function create(req, res) {
   
 }
 
-// GET /api/holidays/:holidayId
+// GET /api/cities/:cityId
 function show(req, res) {
  
 }
 
-// DELETE /api/holidays/:holidayId
+// DELETE /api/cities/:cityId
 function destroy(req, res) {
   
 }
 
-// PUT or PATCH /api/holidays/:holidayId
+// PUT or PATCH /api/albums/:cityId
 function update(req, res) {
-  // find one holiday by id, update it based on request body,
+  // find one city by id, update it based on request body,
   // and send it back as JSON
 }
 
