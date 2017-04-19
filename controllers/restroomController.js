@@ -51,7 +51,10 @@ function show(req, res) {
 
 // DELETE /api/restroom/:restroomId
 function destroy(req, res) {
-
+  // find one restroom and delete it
+  db.Restroom.findOneAndRemove({ _id: req.params.restRoomId}, function(err, foundRestroom) {
+    res.json(foundRestroom);
+  });
 }
 
 // PUT or PATCH /api/restroom/:restroomId
