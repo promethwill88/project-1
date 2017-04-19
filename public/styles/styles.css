@@ -1,8 +1,19 @@
 .jumbotron {
 	padding-bottom: 200px;
+	background: #FFFFFF;
 }
 
 .row {
 	display: center;
 	padding-top: 100px;
 }
+
+img {
+	height: 50px;
+	width: 50px;
+}
+
+#name {
+	font-family: 'League Script', cursive;
+	font-size: 30px;
+}	
