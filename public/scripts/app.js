@@ -6,7 +6,7 @@ var $restroomList;
 $(document).ready(function() {
   $restroomList = $('.list');
   $.ajax({
-  	method: 'GET'
+  	method: 'GET',
   	url: '/api/restrooms',
   	success: handleSuccess,
   	error: handleError

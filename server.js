@@ -29,7 +29,7 @@ app.get('/', function homepage (req, res) {
  */
 
 
-app.get('/api/restroom', controllers.restroom.index);
+app.get('/api/restrooms', controllers.restroom.index);
 
 
 
