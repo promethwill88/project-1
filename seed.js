@@ -34,7 +34,7 @@ var restroom_list =[
     type: "Subway station",
     cleanliness: 1,
     neighborhood: "Financial District",
-    reviews: "bad"
+    reviews: "very bad"
   }
 ];
 
