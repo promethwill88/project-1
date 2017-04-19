@@ -4,35 +4,29 @@
 
 var db = require('../models');
 
-// GET /api/cities
+// GET /api/restrooms
 function index(req, res) {
-
-db.Restroom.find({}, function(err, allRestrooms){
- 
-  // db.Restroom.find({}, function(err, allRestroom) {
-     if(err){
-    throw err;
-  } else {
-      res.json(allRestrooms)
-  }
-})
-}
-// POST /api/cities
+// send back all restrooms as JSON
+  db.Restroom.find({}, function(err, allRestrooms){
+    es.json(allRestrooms)
+  });
+};
+// POST /api/restrooms
 function create(req, res) {
   
 }
 
-// GET /api/cities/:cityId
+// GET /api/restrooms/:restroomId
 function show(req, res) {
  
 }
 
-// DELETE /api/cities/:cityId
+// DELETE /api/restrooms/:restroomId
 function destroy(req, res) {
   
 }
 
-// PUT or PATCH /api/albums/:cityId
+// PUT or PATCH /api/restrooms/:restroomId
 function update(req, res) {
   // find one city by id, update it based on request body,
   // and send it back as JSON
