@@ -55,9 +55,6 @@ $(document).ready(function() {
   	success: handleSuccess,
   	error: handleError
   });
-});
-
-
 
 function handleSuccess(json) {
 	console.log('success!!!!')
@@ -68,3 +65,63 @@ function handleError(e) {
 	console.log('error!!!!');
 	$('.list').text('failed to load restrooms');
 }
+
+
+
+function renderBathroom(json) {
+  console.log('populating bathrooms', json);
+
+  var bathrooomAppend = (`
+        <div class="row-restroom" data-restroom-id="{restroom._id}">
+        
+        <div class="col m1">
+          
+          <ul class="list-group">
+            
+            <li class="list-group-item">
+              <h5 class="inline-header">Name</h5>
+              <span class="restroom-name">${restroom.locationName}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Location</h5>
+              <span class="restroom-location">${restroom.location}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Type</h5>
+              <span class="restroom-location">${restroom.type}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Cleanliness</h5>
+              <span class="restroom-location">${restroom.cleanliness}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Neighborhood</h5>
+              <span class="restroom-location">${restroom.neighborhood}</span>
+            </li>
+          
+          </ul>
+        
+        </div>
+     
+      </div>
+    </div>
+
+  `); 
+
+  $('#restrooms').prepend(bathroomAppend);
+
+}
+
+
+
+
+
+
+
+
+});
+
