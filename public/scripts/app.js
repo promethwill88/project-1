@@ -71,60 +71,48 @@ function handleError(e) {
 function renderBathroom(json) {
   console.log('populating bathrooms', json);
 
-  var bathrooomAppend = ('
-  <div class="container"> 
-    <div class="row restroom" data-restroom-id="{restroom._id}">
-      
-      <div class = col m8>
+  var bathrooomAppend = (`
+        <div class="row-restroom" data-restroom-id="{restroom._id}">
         
-        <ul class="list-group">
+        <div class="col m1">
           
-          <li class="list-group-item">
-            <h5 class="inline-header">Restroom Name</h5>
-            <span class="restroom-name">${restroom.locationName}</span>
-          </li>
+          <ul class="list-group">
+            
+            <li class="list-group-item">
+              <h5 class="inline-header">Name</h5>
+              <span class="restroom-name">${restroom.locationName}</span>
+            </li>
 
-          <li class="list-group-item">
-            <h5 class="inline-header">Location</h5>
-            <span class="restroom-location">${restroom.location}</span>
-          </li>
+            <li class="list-group-item">
+              <h5 class="inline-header">Location</h5>
+              <span class="restroom-location">${restroom.location}</span>
+            </li>
 
-          <li class="list-group-item">
-            <h5 class="inline-header">Type</h5>
-            <span class="restroom-location">${restroom.type}</span>
-          </li>
+            <li class="list-group-item">
+              <h5 class="inline-header">Type</h5>
+              <span class="restroom-location">${restroom.type}</span>
+            </li>
 
-          <li class="list-group-item">
-            <h5 class="inline-header">Cleanliness</h5>
-            <span class="restroom-location">${restroom.cleanliness}</span>
-          </li>
+            <li class="list-group-item">
+              <h5 class="inline-header">Cleanliness</h5>
+              <span class="restroom-location">${restroom.cleanliness}</span>
+            </li>
 
-          <li class="list-group-item">
-            <h5 class="inline-header">Neighborhood</h5>
-            <span class="restroom-location">${restroom.neighborhood}</span>
-          </li>
+            <li class="list-group-item">
+              <h5 class="inline-header">Neighborhood</h5>
+              <span class="restroom-location">${restroom.neighborhood}</span>
+            </li>
+          
+          </ul>
         
-        </ul>
-      
+        </div>
+     
       </div>
-   
     </div>
-  </div>
 
+  `); 
 
-
-
-
-
-
-
-
-
-
-
-    ');
-
-    $('#restrooms').prepend(bathroomAppend);
+  $('#restrooms').prepend(bathroomAppend);
 
 }
 
