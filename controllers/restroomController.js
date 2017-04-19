@@ -30,22 +30,16 @@ function create(req, res) {
   var reviews = reviews;
 
   db.Restroom.create(req.body, function(err, restroom) {
-    if(err) {
-      throw err;
-    } else {
-      res.json(restroom);
-    };
+    if(err) { throw err; }
+    res.json(restroom);
   });
 };
 
 // GET /api/restroom/:restroomId
 function show(req, res) {
   db.Restroom.findById(req.params.restroomId, function(err, foundRestroom) {
-    if(err) {
-      console.log(err); 
-    } else {
-      res.json(foundRestroom);
-    }
+    if(err) { throw err; } 
+    res.json(foundRestroom);
   });
 };
 
@@ -61,7 +55,20 @@ function destroy(req, res) {
 function update(req, res) {
   // find one restroom by id, update it based on request body,
   // and send it back as JSON
-}
+  db.Restroom.findById(req.params.restRoomId, function(err, foundRestroom) {
+    if(err) { throw err; } 
+    foundRestroom.location = req.body.location;
+    foundRestroom.locationName = req.body.locationName;
+    foundRestroom.type = req.body.type;
+    foundRestroom.cleanliness = req.body.cleanliness;
+    foundRestroom.neighborhood = req.body.neighborhood;
+    foundRestroom.reviews = req.body.reviews;
+    foundRestroom.save(function(err, savedRestroom) {
+      if(err) { throw err; }
+      res.json(savedRestroom);
+    });
+  });
+};
 
 
 // export public methods here
