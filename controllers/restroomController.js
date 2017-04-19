@@ -4,22 +4,15 @@
 
 var db = require('../models');
 
-// GET /api/restroom
+// GET /api/restrooms
 function index(req, res) {
-
+// send back all restrooms as JSON
   db.Restroom.find({}, function(err, allRestrooms){
-   
-    // db.Restroom.find({}, function(err, allRestroom) {
-    if(err){
-      throw err;
-    } else {
-      res.json(allRestrooms)
-    };
+    res.json(allRestrooms)
   });
 };
 // POST /api/restroom
 function create(req, res) {
-
   console.log('body', req.body);
   //create restroom based on request body and send it back as JSON
   var location = req.body.location;
@@ -43,7 +36,8 @@ function show(req, res) {
   });
 };
 
-// DELETE /api/restroom/:restroomId
+
+// DELETE /api/restrooms/:restroomId
 function destroy(req, res) {
   // find one restroom and delete it
   db.Restroom.findOneAndRemove({ _id: req.params.restRoomId}, function(err, foundRestroom) {
@@ -69,7 +63,6 @@ function update(req, res) {
     });
   });
 };
-
 
 // export public methods here
 module.exports = {

@@ -12,14 +12,107 @@
 
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=League+Script|Scope+One" rel="stylesheet">
+          
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
   <body>
-    <div class="list">
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row" id="header">
+      <div class="col m1"><img src="../images/tolietlogo.png" /></div>
+      <div class="col m1"><span id="name">atmo</span></div>
+      </div>
+
+      <div class="row" id="neighborhood-search">
+        <div class="input-field col offset-m3 s6">
+        <input type="text" id="autocomplete-input" class="autocomplete">
+        <label for="autocomplete-input">neighborhoods</label>
+        </div>
+      </div>
     </div>
+  </div>
+    <div class="container">
+        <div class="row">
+          <div id="data">
+          
+      <div class="row">
+      <div class="col m10 col offset-m3">
+
+        <form class="form-horizontal">
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend>Add New Restroom</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col m4 control-label" for="name">Name</label>
+              <div class="col m4">
+              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="artistName">Artist Name</label>
+              <div class="col-md-4">
+              <input id="textinput" name="artistName" type="text" placeholder="" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="releaseDate">Release Date</label>
+              <div class="col-md-4">
+              <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
+
+              </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="genres">Genres (separated by commas)</label>
+              <div class="col-md-4">
+                <textarea class="form-control" id="genres" name="genres">rock, pop</textarea>
+              </div>
+            </div>
+
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton">Save Album</label>
+              <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      </div>
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+  
 
 
   </body>
