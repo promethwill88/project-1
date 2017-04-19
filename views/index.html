@@ -36,8 +36,8 @@
 
       <div class="row" id="neighborhood-search">
         <div class="input-field col offset-m3 s6">
-        <input type="text" id="autocomplete-input" class="autocomplete">
-        <label for="autocomplete-input">neighborhoods</label>
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">neighborhoods</label>
         </div>
       </div>
     </div>
@@ -50,75 +50,66 @@
 
 
 
-<!--Submit Form (Work in Progress)-->
-    <div class="container">
-        <div class="row">
-          <div id="data">
-          
-      <div class="row">
-      <div class="col m10 col offset-m3">
-
-        <form class="form-horizontal">
-          <fieldset>
-
-            <!-- Form Name -->
-            <legend>Add New Restroom</legend>
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col m4 control-label" for="name">Name</label>
-              <div class="col m4">
-              <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
-
+<!--Submit Form (Work in Progress)-->             
+      <div class="container">
+            
+            <form class="col s5">
+              
+              <div class="form-group">
+                <label class="col m4" for="name">Name</label>
+                <div class="col m4">
+                <input id="rest-name" name="locationName" type="text" class="form-input">
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="artistName">Artist Name</label>
-              <div class="col-md-4">
-              <input id="textinput" name="artistName" type="text" placeholder="" class="form-control input-md">
-
+              <div class="form-group">
+                 <label class="col m4" for="location">Location</label>
+                <div class="col m4">
+                <input id="rest-loc" name="location" type="text" class="form-input">
+                </div>
               </div>
-            </div>
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="releaseDate">Release Date</label>
-              <div class="col-md-4">
-              <input id="releaseDate" name="releaseDate" type="text" placeholder="1992" class="form-control input-md">
-
+              <div class="form-group">
+                <label class="col m4" for="type">Type</label>
+                <div class="col m4">
+                <input id="rest-type" name="type" type="text" class="form-input">
+                </div>
               </div>
-            </div>
 
-            <!-- Textarea -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="genres">Genres (separated by commas)</label>
-              <div class="col-md-4">
-                <textarea class="form-control" id="genres" name="genres">rock, pop</textarea>
+              <div class="form-group">
+                <label class="col m4" for="cleanliness">Cleanliness</label>
+                <form action="#">
+                  <p class="range-field">
+                    <input type="range" id="test5" min="0" max="10" />
+                  </p>
+                </form>
               </div>
-            </div>
 
-
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="singlebutton">Save Album</label>
-              <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+              <div class="form-group">
+                <label class="col m4" for="neighborhood">Neighborhood</label>
+                <div class="col m4">
+                <input id="rest-hood" name="neighborhood" type="text" class="form-input">
+                </div>
               </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
+
+              <div class="form-group">
+                <label class="col m4" for="review">Review</label>
+                <div class="col m4">
+                <textarea id="text-review" class="materialize-textarea"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col m4" for="save">Save Restroom</label>
+                <div class="col m4">
+                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+
+          </form>
+
       </div>
 
-
-
-
-
-          </div>
-        </div>
-      </div>
   
 
 
