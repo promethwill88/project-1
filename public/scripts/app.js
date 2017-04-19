@@ -52,17 +52,50 @@ $(document).ready(function() {
   $.ajax({
   	method: 'GET',
   	url: '/api/restrooms',
-  	success: handleSuccess,
+  	success: renderRestrooms,
   	error: handleError
   });
+
+  $('#singlebutton').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    $.post('/api/restroom', formData, function(restroom) {
+      renderRestroom(restroom); //render server's response
+    });
+  //$(this).trigger("reset");
+  });
+
 });
 
 
 
-function handleSuccess(json) {
-	console.log('success!!!!')
-
+function renderMultipleRestrooms(restrooms) {
+	restrooms.forEach(function(restroom) {
+    renderRestroom(restroom);
+  });
 }
+
+function renderRestroom(restroom) {
+  restroom.
+
+  // front end html
+}
+
+// function handleDeleteRestroomClick(e) {
+//   var restroomId = $(this).parents('.restroom').data('restroom-id');
+//   $.ajax({
+//     url: '/api/restroom/' + restroomId,
+//     method: 'DELETE',
+//     success: handleDeleteRestroomSuccess
+//   });
+// }
+
+// function handleDeleteRestroomSuccess(data) {
+//   var deletedRestroomId = data._id;
+//   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
+// }
+
+
 
 function handleError(e) {
 	console.log('error!!!!');
