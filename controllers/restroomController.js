@@ -11,27 +11,58 @@ function index(req, res) {
     res.json(allRestrooms)
   });
 };
-// POST /api/restrooms
+// POST /api/restroom
 function create(req, res) {
-  
-}
+  console.log('body', req.body);
+  //create restroom based on request body and send it back as JSON
+  var location = req.body.location;
+  var locationName = req.body.locationName;
+  var type = type;
+  var cleanliness = cleanliness; 
+  var neighborhood = neighborhood;
+  var reviews = reviews;
 
-// GET /api/restrooms/:restroomId
+  db.Restroom.create(req.body, function(err, restroom) {
+    if(err) { throw err; }
+    res.json(restroom);
+  });
+};
+
+// GET /api/restroom/:restroomId
 function show(req, res) {
- 
-}
+  db.Restroom.findById(req.params.restroomId, function(err, foundRestroom) {
+    if(err) { throw err; } 
+    res.json(foundRestroom);
+  });
+};
+
 
 // DELETE /api/restrooms/:restroomId
 function destroy(req, res) {
-  
+  // find one restroom and delete it
+  db.Restroom.findOneAndRemove({ _id: req.params.restRoomId}, function(err, foundRestroom) {
+    res.json(foundRestroom);
+  });
 }
 
-// PUT or PATCH /api/restrooms/:restroomId
+// PUT or PATCH /api/restroom/:restroomId
 function update(req, res) {
-  // find one city by id, update it based on request body,
+  // find one restroom by id, update it based on request body,
   // and send it back as JSON
-}
-
+  db.Restroom.findById(req.params.restRoomId, function(err, foundRestroom) {
+    if(err) { throw err; } 
+    foundRestroom.location = req.body.location;
+    foundRestroom.locationName = req.body.locationName;
+    foundRestroom.type = req.body.type;
+    foundRestroom.cleanliness = req.body.cleanliness;
+    foundRestroom.neighborhood = req.body.neighborhood;
+    foundRestroom.reviews = req.body.reviews;
+    foundRestroom.save(function(err, savedRestroom) {
+      if(err) { throw err; }
+      res.json(savedRestroom);
+    });
+  });
+};
 
 // export public methods here
 module.exports = {
