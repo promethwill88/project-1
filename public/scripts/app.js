@@ -51,15 +51,72 @@ $(document).ready(function() {
   $restroomList = $('.list');
   $.ajax({
   	method: 'GET',
-  	url: '/api/restrooms',
-  	success: handleSuccess,
+  	url: '/api/restroom',
+  	success: renderMultipleRestrooms,
   	error: handleError
   });
 
-function handleSuccess(json) {
-	console.log('success!!!!')
+  $('#singlebutton').on('click', function(e) {
+    console.log('submit');
+    e.preventDefault();
+    console.log($('#name'));
+    // var $name = $('#name');
+    // var $location = $('#location');
+    // var $type = $('#type');
+    // var $cleanliness = $('#cleanliness');
+    // var $neighborhoods = $('#neighborhoods');
+    // var $reviews = $('#reviews');
+    // var dataToPos = {
+    //   location: $location.val(),
+    //   locationName: $name.val(),
+    //   type: $type.val(),
+    //   cleanliness: $cleanliness.val(),
+    //   neighborhood: $neighborhoods.val(),
+    //   reviews:  $reviews.val()
+    // };
+    // var restroomId = $('.container').data('restroomId');
+    // var restroomPostToServerUrl = '/api/restroom/' + restroomId;
 
+    // $.post(restroomPostToServerUrl, dataToPos, function(data) {
+    //   console.log("data received")
+    //   });
+  });
+
+    // var formData = $(this).serialize();
+    // $.post('/api/restroom', formData, function(restroom) {
+    //   renderBathroom(restroom); //render server's response
+    // });
+    // $(this).trigger("reset");
+ 
+
+
+
+
+
+
+function renderMultipleRestrooms(restrooms) {
+	restrooms.forEach(function(restroom) {
+    renderBathroom(restroom);
+  });
 }
+
+
+
+// function handleDeleteRestroomClick(e) {
+//   var restroomId = $(this).parents('.restroom').data('restroom-id');
+//   $.ajax({
+//     url: '/api/restroom/' + restroomId,
+//     method: 'DELETE',
+//     success: handleDeleteRestroomSuccess
+//   });
+// }
+
+// function handleDeleteRestroomSuccess(data) {
+//   var deletedRestroomId = data._id;
+//   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
+// }
+
+
 
 function handleError(e) {
 	console.log('error!!!!');
@@ -71,7 +128,10 @@ function handleError(e) {
 function renderBathroom(json) {
   console.log('populating bathrooms', json);
 
-  var bathrooomAppend = (`
+  // console.log(json.loactionName);
+  
+
+  var bathroomAppend = (`
         <div class="row-restroom" data-restroom-id="{restroom._id}">
         
         <div class="col m1">
@@ -80,27 +140,27 @@ function renderBathroom(json) {
             
             <li class="list-group-item">
               <h5 class="inline-header">Name</h5>
-              <span class="restroom-name">${restroom.locationName}</span>
+              <span class="restroom-name">${json.locationName}</span>
             </li>
 
             <li class="list-group-item">
               <h5 class="inline-header">Location</h5>
-              <span class="restroom-location">${restroom.location}</span>
+              <span class="restroom-location">${json.location}</span>
             </li>
 
             <li class="list-group-item">
               <h5 class="inline-header">Type</h5>
-              <span class="restroom-location">${restroom.type}</span>
+              <span class="restroom-location">${json.type}</span>
             </li>
 
             <li class="list-group-item">
               <h5 class="inline-header">Cleanliness</h5>
-              <span class="restroom-location">${restroom.cleanliness}</span>
+              <span class="restroom-location">${json.cleanliness}</span>
             </li>
 
             <li class="list-group-item">
               <h5 class="inline-header">Neighborhood</h5>
-              <span class="restroom-location">${restroom.neighborhood}</span>
+              <span class="restroom-location">${json.neighborhood}</span>
             </li>
           
           </ul>
@@ -118,10 +178,7 @@ function renderBathroom(json) {
 
 
 
-
-
-
-
-
 });
+
+
 

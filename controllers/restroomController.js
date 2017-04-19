@@ -16,11 +16,11 @@ function create(req, res) {
   console.log('body', req.body);
   //create restroom based on request body and send it back as JSON
   var location = req.body.location;
-  var locationName = req.body.locationName;
-  var type = type;
-  var cleanliness = cleanliness; 
-  var neighborhood = neighborhood;
-  var reviews = reviews;
+  var locationName = req.body.name;
+  var type = req.body.type;
+  var cleanliness = req.body.cleanliness; 
+  var neighborhood = req.body.neighborhoods;
+  var reviews = req.body.reviews;
 
   db.Restroom.create(req.body, function(err, restroom) {
     if(err) { throw err; }
