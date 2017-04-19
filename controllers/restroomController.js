@@ -8,7 +8,7 @@ var db = require('../models');
 function index(req, res) {
 // send back all restrooms as JSON
   db.Restroom.find({}, function(err, allRestrooms){
-    es.json(allRestrooms)
+    res.json(allRestrooms)
   });
 };
 // POST /api/restrooms
