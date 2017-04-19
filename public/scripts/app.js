@@ -51,8 +51,8 @@ $(document).ready(function() {
   $restroomList = $('.list');
   $.ajax({
   	method: 'GET',
-  	url: '/api/restrooms',
-  	success: renderRestrooms,
+  	url: '/api/restroom',
+  	success: renderMultipleRestrooms,
   	error: handleError
   });
 
@@ -65,21 +65,17 @@ $(document).ready(function() {
   //$(this).trigger("reset");
   });
 
-});
+
 
 
 
 function renderMultipleRestrooms(restrooms) {
 	restrooms.forEach(function(restroom) {
-    renderRestroom(restroom);
+    renderBathroom(restroom);
   });
 }
 
-function renderRestroom(restroom) {
-  restroom.
 
-  // front end html
-}
 
 // function handleDeleteRestroomClick(e) {
 //   var restroomId = $(this).parents('.restroom').data('restroom-id');
@@ -101,3 +97,63 @@ function handleError(e) {
 	console.log('error!!!!');
 	$('.list').text('failed to load restrooms');
 }
+
+
+
+function renderBathroom(json) {
+  console.log('populating bathrooms', json);
+
+  // console.log(json.loactionName);
+  
+
+  var bathroomAppend = (`
+        <div class="row-restroom" data-restroom-id="{restroom._id}">
+        
+        <div class="col m1">
+          
+          <ul class="list-group">
+            
+            <li class="list-group-item">
+              <h5 class="inline-header">Name</h5>
+              <span class="restroom-name">${json.locationName}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Location</h5>
+              <span class="restroom-location">${json.location}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Type</h5>
+              <span class="restroom-location">${json.type}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Cleanliness</h5>
+              <span class="restroom-location">${json.cleanliness}</span>
+            </li>
+
+            <li class="list-group-item">
+              <h5 class="inline-header">Neighborhood</h5>
+              <span class="restroom-location">${json.neighborhood}</span>
+            </li>
+          
+          </ul>
+        
+        </div>
+     
+      </div>
+    </div>
+
+  `); 
+
+  $('#restrooms').prepend(bathroomAppend);
+
+}
+
+
+
+});
+
+
+
