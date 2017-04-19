@@ -40,12 +40,18 @@ function create(req, res) {
 
 // GET /api/restroom/:restroomId
 function show(req, res) {
- 
-}
+  db.Restroom.findById(req.params.restroomId, function(err, foundRestroom) {
+    if(err) {
+      console.log(err); 
+    } else {
+      res.json(foundRestroom);
+    }
+  });
+};
 
 // DELETE /api/restroom/:restroomId
 function destroy(req, res) {
-  
+
 }
 
 // PUT or PATCH /api/restroom/:restroomId
