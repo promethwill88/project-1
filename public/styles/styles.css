@@ -3,7 +3,11 @@
 	background: #FFFFFF;
 }
 
-.row {
+#header {
+	
+}
+
+#neighborhood-search {
 	display: center;
 	padding-top: 100px;
 }
