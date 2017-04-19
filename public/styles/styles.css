@@ -1,10 +1,18 @@
+html { 
+ 
+}
+
 .jumbotron {
 	padding-bottom: 200px;
-	background: #FFFFFF;
+	background: url(../images/background.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
 }
 
 #header {
-	
+
 }
 
 #neighborhood-search {
@@ -13,11 +21,12 @@
 }
 
 img {
-	height: 50px;
-	width: 50px;
+	height: 70px;
+	width: 70px;
 }
 
 #name {
 	font-family: 'League Script', cursive;
-	font-size: 30px;
+	font-size: 45px;
+	padding-left: 10px;
 }	
