@@ -56,14 +56,39 @@ $(document).ready(function() {
   	error: handleError
   });
 
-  $('#singlebutton').on('submit', function(e) {
+  $('#singlebutton').on('click', function(e) {
+    console.log('submit');
     e.preventDefault();
-    var formData = $(this).serialize();
-    $.post('/api/restroom', formData, function(restroom) {
-      renderRestroom(restroom); //render server's response
-    });
-  //$(this).trigger("reset");
+    console.log($('#name'));
+    // var $name = $('#name');
+    // var $location = $('#location');
+    // var $type = $('#type');
+    // var $cleanliness = $('#cleanliness');
+    // var $neighborhoods = $('#neighborhoods');
+    // var $reviews = $('#reviews');
+    // var dataToPos = {
+    //   location: $location.val(),
+    //   locationName: $name.val(),
+    //   type: $type.val(),
+    //   cleanliness: $cleanliness.val(),
+    //   neighborhood: $neighborhoods.val(),
+    //   reviews:  $reviews.val()
+    // };
+    // var restroomId = $('.container').data('restroomId');
+    // var restroomPostToServerUrl = '/api/restroom/' + restroomId;
+
+    // $.post(restroomPostToServerUrl, dataToPos, function(data) {
+    //   console.log("data received")
+    //   });
   });
+
+    // var formData = $(this).serialize();
+    // $.post('/api/restroom', formData, function(restroom) {
+    //   renderBathroom(restroom); //render server's response
+    // });
+    // $(this).trigger("reset");
+ 
+
 
 
 
