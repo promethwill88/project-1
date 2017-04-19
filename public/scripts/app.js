@@ -55,9 +55,6 @@ $(document).ready(function() {
   	success: handleSuccess,
   	error: handleError
   });
-});
-
-
 
 function handleSuccess(json) {
 	console.log('success!!!!')
@@ -68,3 +65,39 @@ function handleError(e) {
 	console.log('error!!!!');
 	$('.list').text('failed to load restrooms');
 }
+
+
+
+function renderBathroom(json) {
+  console.log('populating bathrooms', json);
+
+  var bathrooomAppend = ('
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ');
+
+    $('#restrooms').prepend(bathroomAppend);
+
+}
+
+
+
+
+
+
+
+
+});
+
