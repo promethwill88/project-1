@@ -4,37 +4,53 @@
 
 var db = require('../models');
 
-// GET /api/cities
+// GET /api/restroom
 function index(req, res) {
 
-db.Restroom.find({}, function(err, allRestrooms){
- 
-  // db.Restroom.find({}, function(err, allRestroom) {
-     if(err){
-    throw err;
-  } else {
+  db.Restroom.find({}, function(err, allRestrooms){
+   
+    // db.Restroom.find({}, function(err, allRestroom) {
+    if(err){
+      throw err;
+    } else {
       res.json(allRestrooms)
-  }
-})
-}
-// POST /api/cities
+    };
+  });
+};
+// POST /api/restroom
 function create(req, res) {
-  
-}
 
-// GET /api/cities/:cityId
+  console.log('body', req.body);
+  //create restroom based on request body and send it back as JSON
+  var location = req.body.location;
+  var locationName = req.body.locationName;
+  var type = type;
+  var cleanliness = cleanliness; 
+  var neighborhood = neighborhood;
+  var reviews = reviews;
+
+  db.Restroom.create(req.body, function(err, restroom) {
+    if(err) {
+      throw err;
+    } else {
+      res.json(restroom);
+    };
+  });
+};
+
+// GET /api/restroom/:restroomId
 function show(req, res) {
  
 }
 
-// DELETE /api/cities/:cityId
+// DELETE /api/restroom/:restroomId
 function destroy(req, res) {
   
 }
 
-// PUT or PATCH /api/albums/:cityId
+// PUT or PATCH /api/restroom/:restroomId
 function update(req, res) {
-  // find one city by id, update it based on request body,
+  // find one restroom by id, update it based on request body,
   // and send it back as JSON
 }
 
