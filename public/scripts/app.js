@@ -47,19 +47,29 @@ $(document).ready(function() {
   });
 
 // AJAX call for restrooms for personal API
-  var $restroomList;
-  $restroomList = $('.list');
+  
   $.ajax({
   	method: 'GET',
   	url: '/api/restroom',
   	success: renderMultipleRestrooms,
-  	error: handleError
+    error: handleError
   });
 
-  $('#singlebutton').on('click', function(e) {
-    console.log('submit');
+  // when the form is submited, create new restroom
+  $('#restroom-form form').on('submit', function(e) {
+    console.log('submit worked!');
     e.preventDefault();
-    console.log($('#name'));
+    var formData = $(this).serialize();
+    $.post('/api/restroom', formData, function(restroom) {
+      console.log("formdata"); //render server's response
+      renderBathroom(restroom);
+    });
+    $(this).trigger("reset");
+  });
+
+
+
+  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
     // var $name = $('#name');
     // var $location = $('#location');
     // var $type = $('#type');
@@ -90,6 +100,21 @@ $(document).ready(function() {
  
 
 
+function handleDeleteRestroomClick(e) {
+  var restroomId = $(this).parents('.row-restroom').data('restid');
+  console.log(restroomId);
+  $.ajax({
+    url: '/api/restroom/' + restroomId,
+    method: 'DELETE',
+    success: handleDeleteRestroomSuccess
+  });
+}
+
+function handleDeleteRestroomSuccess(json) {
+
+  var deletedRestroomId = json._id;
+  $('div[data-restid=' + deletedRestroomId + ']').remove();
+}
 
 
 
@@ -132,7 +157,7 @@ function renderBathroom(json) {
   
 
   var bathroomAppend = (`
-        <div class="row-restroom" data-restroom-id="{restroom._id}">
+        <div class="row-restroom" data-restid="${json._id}">
         
         <div class="col m1">
           
@@ -164,6 +189,7 @@ function renderBathroom(json) {
             </li>
           
           </ul>
+          <button id="deletebutton" name="deletebutton" class="btn">Delete</button>
         
         </div>
      
@@ -178,7 +204,7 @@ function renderBathroom(json) {
 
 
 
-});
+
 
 
 
