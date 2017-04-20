@@ -3,41 +3,56 @@
 
 var db = require("./models");
 
-var restroom_list =[
+var restroom_list = [ 
   {
     location: "225 Bush St",
     locationName: "General Assembly",
     type: "School",
     cleanliness: 5,
-    neighborhood: "Financial District",
-    review: "very good"
+    neighborhood: "Financial District"
   },
   {
     location: "100 Montgomery St",
     locationName: "Starbucks",
     type: "Coffee shop",
     cleanliness: 4,
-    neighborhood: "SOMA",
-    review: "good"
+    neighborhood: "SOMA"
   },
   {
     location: "601 Mission St",
     locationName: "CVS",
     type: "Store",
     cleanliness: 3,
-    neighborhood: "Mission District",
-    review: "not bad"
+    neighborhood: "Mission District"
   },
   {
     location: "598 Market St",
     locationName: "Montgomery Station",  
     type: "Subway station",
     cleanliness: 1,
-    neighborhood: "Union Square",
-    review: "very bad"
+    neighborhood: "Union Square"
   }
 ];
 
+var review_list = [
+  {
+    review: "Awful atmosphere. I couldn't let loose."
+  },
+  {
+    review: "Free to use, didn't need to buy anything. Could use a bit of redecorating."
+  },
+  {
+    review: "Plenty of tp. A joy to use. Friendly staff."
+  },
+  {
+    review: "I rather not return here. But if I was close to exploding, I wouldn't say no."
+  }
+];
+
+// add all songs to each album's song list
+restroom_list.forEach(function(restroom) {
+  restroom.review = review_list;
+});
 
 db.Restroom.remove({}, function(err, restrooms){
   console.log('removed all restrooms')

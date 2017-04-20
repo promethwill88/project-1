@@ -1,7 +1,4 @@
-/************
- * DATABASE *
- ************/
-
+// restroomController
 var db = require('../models');
 
 // GET /api/restrooms
