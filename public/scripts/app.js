@@ -2,6 +2,9 @@
 
 $(document).ready(function() {
   
+  // Global variable to carry all bathroom data
+  var allMyRestrooms = [];
+
   console.log('app.js loaded!');
 
   $('input.autocomplete').autocomplete({
@@ -37,11 +40,9 @@ $(document).ready(function() {
     
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
     onAutocomplete: function(val) {
+      console.log(val);
       // Callback function when value is autocompleted.
-    // Setting neighborhood selected to searchHood, console logging searchHood
-    var searchHood = val;
-    console.log(searchHood);
-    
+    renderFilteredRestrooms(val);
     },
     
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
@@ -56,6 +57,7 @@ $(document).ready(function() {
   	success: renderMultipleRestrooms,
     error: handleError
   });
+
 
   // when the form is submited, create new restroom
   $('#restroom-form form').on('submit', function(e) {
@@ -106,33 +108,36 @@ $(document).ready(function() {
       method: 'DELETE',
       success: handleDeleteRestroomSuccess
     });
-  }
+  };
 
   function handleDeleteRestroomSuccess(json) {
     var deletedRestroomId = json._id;
     $('div[data-restid=' + deletedRestroomId + ']').remove();
-  }
+  };
 
   function renderMultipleRestrooms(restrooms) {
+    allMyRestrooms = restrooms;
   	restrooms.forEach(function(restroom) {
       renderBathroom(restroom);  
     });
   };
 
 
-  // Testing function for displaying filtered by name and/or neighborhoods
-    // function renderMultipleRestrooms(restrooms) {
-    //   restrooms.forEach(function(restroom) {
-    //     if(restroom.locationName == 'Starbucks'){
-    //     renderBathroom(restroom);
-    //     }   
-    //   });
-    // }
+ // function for displaying filtered by name and/or neighborhoods
+    function renderFilteredRestrooms(filter) {
+      // Clear page of results
+      $('#restrooms').empty();
+      allMyRestrooms.forEach(function(restroom) {
+        if(restroom.neighborhood === filter){
+          renderBathroom(restroom);
+        }   
+      });
+    };
 
   function handleError(e) {
   	console.log('error!!!!');
   	$('.list').text('failed to load restrooms');
-  }
+  };
 
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
@@ -163,7 +168,7 @@ $(document).ready(function() {
       `); 
 
       $('#restrooms').prepend(bathroomAppend);
-  }
+  };
 
 
 
