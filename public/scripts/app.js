@@ -2,6 +2,8 @@
 
 $(document).ready(function() {
   
+  var allMyRestrooms = [];
+
   console.log('app.js loaded!');
 
   $('input.autocomplete').autocomplete({
@@ -39,8 +41,7 @@ $(document).ready(function() {
     onAutocomplete: function(val) {
       // Callback function when value is autocompleted.
     // Setting neighborhood selected to searchHood, console logging searchHood
-    var searchHood = val;
-    console.log(searchHood);
+    renderFilteredRestrooms(val);
     
     },
     
@@ -56,6 +57,7 @@ $(document).ready(function() {
   	success: renderMultipleRestrooms,
     error: handleError
   });
+
 
   // when the form is submited, create new restroom
   $('#restroom-form form').on('submit', function(e) {
@@ -114,20 +116,21 @@ $(document).ready(function() {
   }
 
   function renderMultipleRestrooms(restrooms) {
+    allMyRestrooms = restrooms;
   	restrooms.forEach(function(restroom) {
       renderBathroom(restroom);  
     });
   };
 
 
-  // Testing function for displaying filtered by name and/or neighborhoods
-    // function renderMultipleRestrooms(restrooms) {
-    //   restrooms.forEach(function(restroom) {
-    //     if(restroom.locationName == 'Starbucks'){
-    //     renderBathroom(restroom);
-    //     }   
-    //   });
-    // }
+ // function for displaying filtered by name and/or neighborhoods
+    function renderFilteredRestrooms(filter) {
+      allMyRestrooms.forEach(function(restroom) {
+        if(restroom.neighborhood === filter){
+          renderBathroom(restroom);
+        }   
+      });
+    }
 
   function handleError(e) {
   	console.log('error!!!!');
