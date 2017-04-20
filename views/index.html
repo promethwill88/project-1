@@ -39,6 +39,7 @@
 
         <div class="row" id="neighborhood-search">
           <div class="input-field col offset-m3 s6">
+          <i class="material-icons prefix">search</i>
             <input type="text" id="autocomplete-input" class="autocomplete">
             <label for="autocomplete-input">neighborhoods</label>
           </div>
@@ -53,48 +54,30 @@
     <section id='restroom-form'>         
       <div class="container">
             
-        <form class="col s5" >      
+        <form>      
           
           <div class="form-group">
-            <label class="col m4" for="name">Name</label>
-            <div class="col m4">
-              <input id="rest-name" name="locationName" type="text" class="form-input">
-            </div>
+            <input placeholder="business name" id="rest-name" name="locationName" type="text" class="form-input">
           </div>
 
           <div class="form-group">
-             <label class="col m4" for="location">Location</label>
-            <div class="col m4">
-              <input id="rest-loc" name="location" type="text" class="form-input">
-            </div>
+            <input placeholder="address" id="rest-loc" name="location" type="text" class="form-input">
           </div>
 
           <div class="form-group">
-            <label class="col m4" for="type">Type</label>
-            <div class="col m4">
-              <input id="rest-type" name="type" type="text" class="form-input">
-            </div>
+            <input placeholder="type" id="rest-type" name="type" type="text" class="form-input">
+          </div>
+
+          <div class="form-group">  
+            <input placeholder="cleanliness (0 - 10)" id="rest-clean" name="cleanliness" type="text" class="form-input">
           </div>
 
           <div class="form-group">
-            <label class="col m4" for="cleanliness">Cleanliness</label>
-            <div class="col m4">
-              <input id="rest-clean" name="cleanliness" type="text" class="form-input">
-            </div>
+            <input placeholder="neighborhood" id="rest-hood" name="neighborhood" type="text" class="form-input">
           </div>
 
           <div class="form-group">
-            <label class="col m4" for="neighborhood">Neighborhood</label>
-            <div class="col m4">
-              <input id="rest-hood" name="neighborhood" type="text" class="form-input">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col m4" for="review">Review</label>
-            <div class="col m4">
-              <input id="rest-review" name="review" type="text" class="form-input">
-            </div>
+              <input placeholder="enter review" id="rest-review" name="review" type="text" class="form-input" data-length="60">
           </div>
 
           <div class="form-group">
