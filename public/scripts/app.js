@@ -38,12 +38,15 @@ $(document).ready(function() {
     
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
     onAutocomplete: function(val) {
-      // Callback function when value is autcompleted.
-   
+      // Callback function when value is autocompleted.
+    console.log(val);
+    // Console logs the value selected
+    // Use this to filter ajax call to populate data from personal API
+    
     },
     
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-  
+    
   });
 
 // AJAX call for restrooms for personal API
