@@ -1,5 +1,5 @@
 .jumbotron {
-	padding-bottom: 200px;
+	padding-bottom: 500px;
 	background: url(../images/background.jpg) no-repeat center center fixed; 
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
@@ -13,10 +13,6 @@
 
 #neighborhood-search {
 	padding-top: 100px;
-}
-
-.input-field {
- 	color: #ffffff;
 }
 
 img {
@@ -36,7 +32,22 @@ img {
 
 }
 
+.form-header {
+	padding-left: 230px;
+	padding-top: 50px;
+
+}
+
 form {
 	padding-left: 200px;
 	padding-right: 200px;
+}
+
+footer {
+	margin-top: 100px;
+}
+
+#smalllogo {
+	height: 40px;
+	width: 40px;
 }

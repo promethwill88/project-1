@@ -154,8 +154,8 @@ $(document).ready(function() {
               <p><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
               <p><i class="tiny material-icons prefix">info</i> ${json.type}</p>
               <p><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
-              <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light"><i class="material-icons left">import_export</i>update</a>  
-              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light"><i class="material-icons left">delete</i>Delete</a>
+              <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">import_export</i>update</a>  
+              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
             </div>
           </div>
         </div>
