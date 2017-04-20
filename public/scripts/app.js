@@ -47,7 +47,7 @@ $(document).ready(function() {
   });
 
 // AJAX call for restrooms for personal API
-  
+
   $.ajax({
   	method: 'GET',
   	url: '/api/restroom',
@@ -117,8 +117,6 @@ function handleDeleteRestroomSuccess(json) {
 }
 
 
-
-
 function renderMultipleRestrooms(restrooms) {
 	restrooms.forEach(function(restroom) {
     renderBathroom(restroom);
@@ -127,82 +125,82 @@ function renderMultipleRestrooms(restrooms) {
 
 
 
-// function handleDeleteRestroomClick(e) {
-//   var restroomId = $(this).parents('.restroom').data('restroom-id');
-//   $.ajax({
-//     url: '/api/restroom/' + restroomId,
-//     method: 'DELETE',
-//     success: handleDeleteRestroomSuccess
-//   });
-// }
+  // function handleDeleteRestroomClick(e) {
+  //   var restroomId = $(this).parents('.restroom').data('restroom-id');
+  //   $.ajax({
+  //     url: '/api/restroom/' + restroomId,
+  //     method: 'DELETE',
+  //     success: handleDeleteRestroomSuccess
+  //   });
+  // }
 
-// function handleDeleteRestroomSuccess(data) {
-//   var deletedRestroomId = data._id;
-//   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
-// }
-
-
-
-function handleError(e) {
-	console.log('error!!!!');
-	$('.list').text('failed to load restrooms');
-}
+  // function handleDeleteRestroomSuccess(data) {
+  //   var deletedRestroomId = data._id;
+  //   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
+  // }
 
 
 
-function renderBathroom(json) {
-  console.log('populating bathrooms', json);
+  function handleError(e) {
+  	console.log('error!!!!');
+  	$('.list').text('failed to load restrooms');
+  }
 
-  // console.log(json.loactionName);
-  
+  function renderBathroom(json) {
+    console.log('populating bathrooms', json);
+
 
   var bathroomAppend = (`
         <div class="row-restroom" data-restid="${json._id}">
         
         <div class="col m1">
+
           
-          <ul class="list-group">
+          <div class="col m1">
             
-            <li class="list-group-item">
-              <h5 class="inline-header">Name</h5>
-              <span class="restroom-name">${json.locationName}</span>
-            </li>
+            <ul class="list-group">
+              
+              <li class="list-group-item">
+                <h5 class="inline-header">Name</h5>
+                <span class="restroom-name">${json.locationName}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Location</h5>
-              <span class="restroom-location">${json.location}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Location</h5>
+                <span class="restroom-location">${json.location}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Type</h5>
-              <span class="restroom-location">${json.type}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Type</h5>
+                <span class="restroom-location">${json.type}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Cleanliness</h5>
-              <span class="restroom-location">${json.cleanliness}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Cleanliness</h5>
+                <span class="restroom-location">${json.cleanliness}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Neighborhood</h5>
-              <span class="restroom-location">${json.neighborhood}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Neighborhood</h5>
+                <span class="restroom-location">${json.neighborhood}</span>
+              </li>
+            
+            </ul>
           
+
+          </div>
+       
+
           </ul>
           <button id="deletebutton" name="deletebutton" class="btn">Delete</button>
-        
+
         </div>
-     
       </div>
-    </div>
 
-  `); 
+    `); 
 
-  $('#restrooms').prepend(bathroomAppend);
-
-}
-
-
+    $('#restrooms').prepend(bathroomAppend);
+  }
 
 
 

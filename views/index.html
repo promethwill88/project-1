@@ -27,95 +27,87 @@
   </head>
   <body>
 
-  <div class="jumbotron">
-    <div class="container">
-      <div class="row" id="header">
-      <div class="col m1"><img src="../images/tolietlogo.png" /></div>
-      <div class="col m1"><span id="name">atmo</span></div>
-      </div>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row" id="header">
+          <div class="col m1"><img src="../images/tolietlogo.png" /></div>
+          <div class="col m1"><span id="name">atmo</span></div>
+        </div>
 
-      <div class="row" id="neighborhood-search">
-        <div class="input-field col offset-m3 s6">
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">neighborhoods</label>
+        <div class="row" id="neighborhood-search">
+          <div class="input-field col offset-m3 s6">
+            <input type="text" id="autocomplete-input" class="autocomplete">
+            <label for="autocomplete-input">neighborhoods</label>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     
 <!--Seed data container-->
 <div id="restrooms">
   <div class="container"></div>
 </div>
 
-
-
 <!--Submit Form (Work in Progress)-->    
     <section id='restroom-form'>         
       <div class="container">
             
-            <form class="col s5" >
-              
-              <div class="form-group">
-                <label class="col m4" for="name">Name</label>
-                <div class="col m4">
-                <input id="rest-name" name="locationName" type="text" class="form-input">
-                </div>
-              </div>
+        <form class="col s5" >      
+          
+          <div class="form-group">
+            <label class="col m4" for="name">Name</label>
+            <div class="col m4">
+              <input id="rest-name" name="locationName" type="text" class="form-input">
+            </div>
+          </div>
 
-              <div class="form-group">
-                 <label class="col m4" for="location">Location</label>
-                <div class="col m4">
-                <input id="rest-loc" name="location" type="text" class="form-input">
-                </div>
-              </div>
+          <div class="form-group">
+             <label class="col m4" for="location">Location</label>
+            <div class="col m4">
+              <input id="rest-loc" name="location" type="text" class="form-input">
+            </div>
+          </div>
 
-              <div class="form-group">
-                <label class="col m4" for="type">Type</label>
-                <div class="col m4">
-                <input id="rest-type" name="type" type="text" class="form-input">
-                </div>
-              </div>
+          <div class="form-group">
+            <label class="col m4" for="type">Type</label>
+            <div class="col m4">
+              <input id="rest-type" name="type" type="text" class="form-input">
+            </div>
+          </div>
 
-              <!-- <div class="form-group">
-                <label class="col m4" for="cleanliness">Cleanliness</label>
-                <form action="#">
-                  <p class="range-field">
-                    <input type="range" id="test5" min="0" max="10" />
-                  </p>
-                </form>
-              </div>
+          <div class="form-group">
+            <label class="col m4" for="cleanliness">Cleanliness</label>
+            <div class="col m4">
+              <input id="rest-clean" name="cleanliness" type="text" class="form-input">
+            </div>
+          </div>
 
-              <div class="form-group">
-                <label class="col m4" for="neighborhood">Neighborhood</label>
-                <div class="col m4">
-                  <input type="text" id="autocomplete-input" class="autocomplete">
-                </div>
-              </div>
+          <div class="form-group">
+            <label class="col m4" for="neighborhood">Neighborhood</label>
+            <div class="col m4">
+              <input id="rest-hood" name="neighborhood" type="text" class="form-input">
+            </div>
+          </div>
 
-              <div class="form-group">
-                <label class="col m4" for="review">Review</label>
-                <div class="col m4">
-                <textarea id="text-review" class="materialize-textarea"></textarea>
-                </div>
-              </div> -->
+          <div class="form-group">
+            <label class="col m4" for="review">Review</label>
+            <div class="col m4">
+              <input id="rest-review" name="review" type="text" class="form-input">
+            </div>
+          </div>
 
-              <div class="form-group">
-                <label class="col m4" for="save">Save Restroom</label>
-                <div class="col m4">
-                  <button id="singlebutton" name="singlebutton" class="btn">Submit</button>
-                </div>
-              </div>
+          <div class="form-group">
+            <div class="col m4">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Save Restroom</button>
+            </div> 
+          </div>
+        
+        </form>
+        
+      </div>
 
-          </form>
-
-        </div>
-      </section>
-
+    </section>
   
-
-
   </body>
-
 
 </html>
