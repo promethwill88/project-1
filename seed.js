@@ -10,7 +10,7 @@ var restroom_list =[
     type: "School",
     cleanliness: 5,
     neighborhood: "Financial District",
-    reviews: "very good"
+    review: "very good"
   },
   {
     location: "100 Montgomery St",
@@ -18,7 +18,7 @@ var restroom_list =[
     type: "Coffee shop",
     cleanliness: 4,
     neighborhood: "Financial District",
-    reviews: "good"
+    review: "good"
   },
   {
     location: "601 Mission St",
@@ -26,7 +26,7 @@ var restroom_list =[
     type: "Store",
     cleanliness: 3,
     neighborhood: "Financial District",
-    reviews: "not bad"
+    review: "not bad"
   },
   {
     location: "598 Market St",
@@ -34,7 +34,7 @@ var restroom_list =[
     type: "Subway station",
     cleanliness: 1,
     neighborhood: "Financial District",
-    reviews: "very bad"
+    review: "very bad"
   }
 ];
 

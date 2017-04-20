@@ -75,14 +75,14 @@ $(document).ready(function() {
     // var $type = $('#type');
     // var $cleanliness = $('#cleanliness');
     // var $neighborhoods = $('#neighborhoods');
-    // var $reviews = $('#reviews');
+    // var $review = $('#review');
     // var dataToPos = {
     //   location: $location.val(),
     //   locationName: $name.val(),
     //   type: $type.val(),
     //   cleanliness: $cleanliness.val(),
     //   neighborhood: $neighborhoods.val(),
-    //   reviews:  $reviews.val()
+    //   review:  $review.val()
     // };
     // var restroomId = $('.container').data('restroomId');
     // var restroomPostToServerUrl = '/api/restroom/' + restroomId;
@@ -172,17 +172,22 @@ function renderMultipleRestrooms(restrooms) {
 
               <li class="list-group-item">
                 <h5 class="inline-header">Type</h5>
-                <span class="restroom-location">${json.type}</span>
+                <span class="restroom-type">${json.type}</span>
               </li>
 
               <li class="list-group-item">
                 <h5 class="inline-header">Cleanliness</h5>
-                <span class="restroom-location">${json.cleanliness}</span>
+                <span class="restroom-cleanliness">${json.cleanliness}</span>
               </li>
 
               <li class="list-group-item">
                 <h5 class="inline-header">Neighborhood</h5>
-                <span class="restroom-location">${json.neighborhood}</span>
+                <span class="restroom-neighborhood">${json.neighborhood}</span>
+              </li>
+
+              <li class="list-group-item">
+                <h5 class="inline-header">Review</h5>
+                <span class="restroom-review">${json.review}</span>
               </li>
             
             </ul>
