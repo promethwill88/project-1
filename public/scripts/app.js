@@ -114,7 +114,7 @@ $(document).ready(function() {
       type: $restroomRow.find('.edit-type').val(),
       review: $restroomRow.find('.edit-review').val()
     };
-    console.log(data);
+
     $.ajax({
       method: 'PUT',
       url: '/api/restroom/' + restroomId,
