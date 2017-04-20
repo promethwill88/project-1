@@ -16,7 +16,7 @@
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=League+Script|Scope+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=League+Script|Scope+One|Open+Sans" rel="stylesheet">
           
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
@@ -28,22 +28,26 @@
           <div class="col m1"><img src="../images/tolietlogo.png" /></div>
           <div class="col m1"><span id="name">airpnp</span></div>
         </div>
+        <div class="row" id="titletext">
+        <h3><span>Airpnp</span> Find unique restrooms and experience peeing like a local.</h3>
+        </div>
+
         <div class="row" id="neighborhood-search">
-          <div class="input-field col offset-m3 s6">
-          <i class="material-icons prefix">search</i>
-            <input type="text" id="autocomplete-input" class="autocomplete white-text">
-            <label for="autocomplete-input">neighborhood</label>
+          <div class="container">
+            <div class="col s12">        
+            <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Search by Neighborhood">
+            </div>
           </div>
         </div>
       </div>
     </div>
 <!--Seed data container-->
 <div id="restrooms"></div>
-<!--Submit Form (Work in Progress)-->    
+<!--Submit Form-->    
     <div class="form-header">
     </div>
    
-   <section id='restroom-form'>         
+   <section id="restroom-form">         
       <div class="container">
             
         <form>      
