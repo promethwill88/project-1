@@ -156,62 +156,74 @@ function renderMultipleRestrooms(restrooms) {
 
 
   var bathroomAppend = (`
-        <div class="row-restroom" data-restid="${json._id}">
-        
-        <div class="col m1">
-
-          
-          <div class="col m1">
-            
-            <ul class="list-group">
-              
-              <li class="list-group-item">
-                <h5 class="inline-header">Name</h5>
-                <span class="restroom-name">${json.locationName}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Location</h5>
-                <span class="restroom-location">${json.location}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Type</h5>
-                <span class="restroom-type">${json.type}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Cleanliness</h5>
-                <span class="restroom-cleanliness">${json.cleanliness}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Neighborhood</h5>
-                <span class="restroom-neighborhood">${json.neighborhood}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Review</h5>
-                <span class="restroom-review">${json.review}</span>
-              </li>
-            
-            </ul>
-          
-
+    <div class="container">
+      <div class="row-restroom" data-restid="${json._id}">            
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="">
           </div>
-       
-
-          </ul>
-          <button id="deletebutton" name="deletebutton" class="btn">Delete</button>
-
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">${json.locationName}<i class="material-icons right">more_vert</i></span>
+            <p>${json.location}</p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+            <p>Type: ${json.type}</p>
+            <p>Cleanliness: ${json.cleanliness}</p>
+            <p>Review: ${json.review}</p> 
+          </div>
         </div>
       </div>
-
+    </div>
     `); 
 
     $('#restrooms').prepend(bathroomAppend);
   }
 
+
+//  <div class="col m1">
+// <ul class="list-group">
+              
+//               <li class="list-group-item">
+//                 <h5 class="inline-header">Name</h5>
+//                 <span class="restroom-name">${json.locationName}</span>
+//               </li>
+
+//               <li class="list-group-item">
+//                 <h5 class="inline-header">Location</h5>
+//                 <span class="restroom-location">${json.location}</span>
+//               </li>
+
+//               <li class="list-group-item">
+//                 <h5 class="inline-header">Type</h5>
+//                 <span class="restroom-type">${json.type}</span>
+//               </li>
+
+//               <li class="list-group-item">
+//                 <h5 class="inline-header">Cleanliness</h5>
+//                 <span class="restroom-cleanliness">${json.cleanliness}</span>
+//               </li>
+
+//               <li class="list-group-item">
+//                 <h5 class="inline-header">Neighborhood</h5>
+//                 <span class="restroom-neighborhood">${json.neighborhood}</span>
+//               </li>
+
+//               <li class="list-group-item">
+//                 <h5 class="inline-header">Review</h5>
+//                 <span class="restroom-review">${json.review}</span>
+//               </li>
+            
+//             </ul>
+          
+
+//           </div>
+       
+
+//           </ul>
+//           <button id="deletebutton" name="deletebutton" class="btn">Delete</button>
+
+//         </div>
 
 
 
