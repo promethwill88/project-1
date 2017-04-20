@@ -51,10 +51,8 @@ function update(req, res) {
   // and send it back as JSON
   db.Restroom.findById(req.params.restroomId, function(err, foundRestroom) {
     if(err) { throw err; } 
-    foundRestroom.location = req.body.location;
-    foundRestroom.locationName = req.body.locationName;
+
     foundRestroom.type = req.body.type;
-    foundRestroom.cleanliness = req.body.cleanliness;
     foundRestroom.neighborhood = req.body.neighborhood;
     foundRestroom.review = req.body.review;
     foundRestroom.save(function(err, savedRestroom) {

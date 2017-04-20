@@ -96,8 +96,10 @@ $(document).ready(function() {
     var $restroomRow = $(this).closest('.row-restroom');
     var restroomId = $restroomRow.data('restid');
     console.log(restroomId);
+    // var locationName = $restroomRow.find('span#locationName').text();
+    // var location = $restroomRow.find('p#location').text();
+    // var cleanliness = $restroomRow.find('p#cleanliness').text();
     var neighborhood = $restroomRow.find('p.neighborhood').text();
-    console.log(neighborhood);
     $restroomRow.find('p.neighborhood').html('<input class="edit-neighborhood" value="' + neighborhood + '"></input>');
     var type = $restroomRow.find('p.type').text();
     $restroomRow.find('p.type').html('<input class="edit-type" value="' + type + '"></input>');
@@ -110,6 +112,9 @@ $(document).ready(function() {
     var $restroomRow = $('[data-restid=' + restroomId + ']');
     console.log($restroomRow)
     var data = {
+      // locationName: $restroomRow.find('span#locationName').val(),
+      // location: $restroomRow.find('p#location').val(),
+      // cleanliness: $restroomRow.find('p#cleanliness').val(),
       neighborhood: $restroomRow.find('.edit-neighborhood').val(),
       type: $restroomRow.find('.edit-type').val(),
       review: $restroomRow.find('.edit-review').val()
