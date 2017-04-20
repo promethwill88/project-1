@@ -147,11 +147,13 @@ $(document).ready(function() {
               <span class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
               <p><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
               <p><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
+
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <p><i class="material-icons prefix">business</i> ${json.type}</p>
-              <p><i class="material-icons prefix">stars</i> ${json.review}</p>
+              <p><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
+              <p><i class="tiny material-icons prefix">info</i> ${json.type}</p>
+              <p><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light"><i class="material-icons left">import_export</i>update</a>  
               <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light"><i class="material-icons left">delete</i>Delete</a>
             </div>
