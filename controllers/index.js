@@ -1,3 +1,4 @@
 module.exports = {
-  restroom: require('./restroomController')
+  restroom: require('./restroomController'),
+  restroomReview: require('./restroomReviewController')
 }

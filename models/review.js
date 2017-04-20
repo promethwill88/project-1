@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ReviewSchema = new Schema({
-  cleanliness: String,
   comment: String
 });
 
