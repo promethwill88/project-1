@@ -39,9 +39,9 @@ $(document).ready(function() {
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
     onAutocomplete: function(val) {
       // Callback function when value is autocompleted.
-    console.log(val);
-    // Console logs the value selected
-    // Use this to filter ajax call to populate data from personal API
+    // Setting neighborhood selected to searchHood, console logging searchHood
+    var searchHood = val;
+    console.log(searchHood);
     
     },
     
@@ -69,8 +69,6 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
-
-
 
   $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
     // var $name = $('#name');
@@ -101,8 +99,6 @@ $(document).ready(function() {
     // });
     // $(this).trigger("reset");
  
-
-
 function handleDeleteRestroomClick(e) {
   var restroomId = $(this).parents('.row-restroom').data('restid');
   console.log(restroomId);
@@ -114,17 +110,23 @@ function handleDeleteRestroomClick(e) {
 }
 
 function handleDeleteRestroomSuccess(json) {
-
   var deletedRestroomId = json._id;
   $('div[data-restid=' + deletedRestroomId + ']').remove();
 }
 
-
 function renderMultipleRestrooms(restrooms) {
 	restrooms.forEach(function(restroom) {
-    renderBathroom(restroom);
+    renderBathroom(restroom);  
   });
-}
+};
+
+// function renderMultipleRestrooms(restrooms) {
+//   restrooms.forEach(function(restroom) {
+//     if(restroom.locationName == 'Starbucks'){
+//     renderBathroom(restroom);
+//     }   
+//   });
+// }
 
 
 

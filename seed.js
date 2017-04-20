@@ -17,7 +17,7 @@ var restroom_list =[
     locationName: "Starbucks",
     type: "Coffee shop",
     cleanliness: 4,
-    neighborhood: "Financial District",
+    neighborhood: "SOMA",
     review: "good"
   },
   {
@@ -25,7 +25,7 @@ var restroom_list =[
     locationName: "CVS",
     type: "Store",
     cleanliness: 3,
-    neighborhood: "Financial District",
+    neighborhood: "Mission",
     review: "not bad"
   },
   {
@@ -33,7 +33,7 @@ var restroom_list =[
     locationName: "Montgomery Station",  
     type: "Subway station",
     cleanliness: 1,
-    neighborhood: "Financial District",
+    neighborhood: "Union Square",
     review: "very bad"
   }
 ];
