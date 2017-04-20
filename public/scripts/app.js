@@ -1,9 +1,7 @@
 // CLIENT-SIDE JS
-
 $(document).ready(function() {
   
   console.log('app.js loaded!');
-
   $('input.autocomplete').autocomplete({
     data: {
       'Financial District': null,
@@ -47,16 +45,13 @@ $(document).ready(function() {
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
     
   });
-
 // AJAX call for restrooms for personal API
-
   $.ajax({
-  	method: 'GET',
-  	url: '/api/restroom',
-  	success: renderMultipleRestrooms,
+    method: 'GET',
+    url: '/api/restroom',
+    success: renderMultipleRestrooms,
     error: handleError
   });
-
   // when the form is submited, create new restroom
   $('#restroom-form form').on('submit', function(e) {
     console.log('submit worked!');
@@ -68,7 +63,8 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
-
+  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
+  $('#restrooms').on('click', '#updatebutton', handleUpdateRestroomClick);
   $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
     // var $name = $('#name');
     // var $location = $('#location');
@@ -86,18 +82,29 @@ $(document).ready(function() {
     // };
     // var restroomId = $('.container').data('restroomId');
     // var restroomPostToServerUrl = '/api/restroom/' + restroomId;
-
     // $.post(restroomPostToServerUrl, dataToPos, function(data) {
     //   console.log("data received")
     //   });
-
-
     // var formData = $(this).serialize();
     // $.post('/api/restroom', formData, function(restroom) {
     //   renderBathroom(restroom); //render server's response
     // });
     // $(this).trigger("reset");
- 
+
+
+  function handleUpdateRestroomClick(e) {
+    var $restroomRow = $(this).closest('.row-restroom');
+    var restroomId = $restroomRow.data('restid');
+    console.log(restroomId);
+    var neighborhood = $restroomRow.find('i#neighborhood').text();
+    $restroomRow.find('i#neighborhood').html('<input class="edit-neiborhood" value="' + neighborhood + '"></input>');
+    var type = $restroomRow.find('i#type').text();
+    $restroomRow.find('i#type').html('<input class="edit-type" value="' + type + '"></input>');
+    var review = $restroomRow.find('i#review').text();
+    $restroomRow.find('i#review').html('<input class="edit-review" value="' + review + '"></input>');
+  }
+
+
   function handleDeleteRestroomClick(e) {
     var restroomId = $(this).parents('.row-restroom').data('restid');
     console.log(restroomId);
@@ -107,19 +114,15 @@ $(document).ready(function() {
       success: handleDeleteRestroomSuccess
     });
   }
-
   function handleDeleteRestroomSuccess(json) {
     var deletedRestroomId = json._id;
     $('div[data-restid=' + deletedRestroomId + ']').remove();
   }
-
   function renderMultipleRestrooms(restrooms) {
-  	restrooms.forEach(function(restroom) {
+    restrooms.forEach(function(restroom) {
       renderBathroom(restroom);  
     });
   };
-
-
   // Testing function for displaying filtered by name and/or neighborhoods
     // function renderMultipleRestrooms(restrooms) {
     //   restrooms.forEach(function(restroom) {
@@ -128,15 +131,12 @@ $(document).ready(function() {
     //     }   
     //   });
     // }
-
   function handleError(e) {
-  	console.log('error!!!!');
-  	$('.list').text('failed to load restrooms');
+    console.log('error!!!!');
+    $('.list').text('failed to load restrooms');
   }
-
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
-
     var bathroomAppend = (`
       <div class="container">
         <div class="row-restroom" data-restid="${json._id}">            
@@ -147,32 +147,20 @@ $(document).ready(function() {
               <span class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
               <p><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
               <p><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
-
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <p><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
-              <p><i class="tiny material-icons prefix">info</i> ${json.type}</p>
-              <p><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
+              <p><i class="tiny material-icons prefix" id="neighborhood">business</i> ${json.neighborhood}</p>
+              <p><i class="tiny material-icons prefix" id="type">info</i> ${json.type}</p>
+              <p><i class="tiny material-icons prefix" id="review">stars</i> ${json.review}</p>
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">import_export</i>update</a>  
               <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
+              <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">Save</i>Save</a>
             </div>
           </div>
         </div>
       </div>
       `); 
-
       $('#restrooms').prepend(bathroomAppend);
   }
-
-
-
-
-
-
-
 });
-
-
-
-
