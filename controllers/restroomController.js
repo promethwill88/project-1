@@ -20,7 +20,7 @@ function create(req, res) {
   var type = req.body.type;
   var cleanliness = req.body.cleanliness; 
   var neighborhood = req.body.neighborhoods;
-  var reviews = req.body.reviews;
+  var review = req.body.review;
 
   db.Restroom.create(req.body, function(err, restroom) {
     if(err) { throw err; }
@@ -56,7 +56,7 @@ function update(req, res) {
     foundRestroom.type = req.body.type;
     foundRestroom.cleanliness = req.body.cleanliness;
     foundRestroom.neighborhood = req.body.neighborhood;
-    foundRestroom.reviews = req.body.reviews;
+    foundRestroom.review = req.body.review;
     foundRestroom.save(function(err, savedRestroom) {
       if(err) { throw err; }
       res.json(savedRestroom);

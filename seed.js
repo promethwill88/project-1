@@ -10,31 +10,31 @@ var restroom_list =[
     type: "School",
     cleanliness: 5,
     neighborhood: "Financial District",
-    reviews: "very good"
+    review: "very good"
   },
   {
     location: "100 Montgomery St",
     locationName: "Starbucks",
     type: "Coffee shop",
     cleanliness: 4,
-    neighborhood: "Financial District",
-    reviews: "good"
+    neighborhood: "SOMA",
+    review: "good"
   },
   {
     location: "601 Mission St",
     locationName: "CVS",
     type: "Store",
     cleanliness: 3,
-    neighborhood: "Financial District",
-    reviews: "not bad"
+    neighborhood: "Mission",
+    review: "not bad"
   },
   {
     location: "598 Market St",
     locationName: "Montgomery Station",  
     type: "Subway station",
     cleanliness: 1,
-    neighborhood: "Financial District",
-    reviews: "very bad"
+    neighborhood: "Union Square",
+    review: "very bad"
   }
 ];
 

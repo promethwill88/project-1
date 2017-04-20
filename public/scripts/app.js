@@ -38,12 +38,15 @@ $(document).ready(function() {
     
     limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
     onAutocomplete: function(val) {
-      // Callback function when value is autcompleted.
-   
+      // Callback function when value is autocompleted.
+    // Setting neighborhood selected to searchHood, console logging searchHood
+    var searchHood = val;
+    console.log(searchHood);
+    
     },
     
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-  
+    
   });
 
 // AJAX call for restrooms for personal API
@@ -67,22 +70,20 @@ $(document).ready(function() {
     $(this).trigger("reset");
   });
 
-
-
   $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
     // var $name = $('#name');
     // var $location = $('#location');
     // var $type = $('#type');
     // var $cleanliness = $('#cleanliness');
     // var $neighborhoods = $('#neighborhoods');
-    // var $reviews = $('#reviews');
+    // var $review = $('#review');
     // var dataToPos = {
     //   location: $location.val(),
     //   locationName: $name.val(),
     //   type: $type.val(),
     //   cleanliness: $cleanliness.val(),
     //   neighborhood: $neighborhoods.val(),
-    //   reviews:  $reviews.val()
+    //   review:  $review.val()
     // };
     // var restroomId = $('.container').data('restroomId');
     // var restroomPostToServerUrl = '/api/restroom/' + restroomId;
@@ -98,8 +99,6 @@ $(document).ready(function() {
     // });
     // $(this).trigger("reset");
  
-
-
 function handleDeleteRestroomClick(e) {
   var restroomId = $(this).parents('.row-restroom').data('restid');
   console.log(restroomId);
@@ -111,17 +110,23 @@ function handleDeleteRestroomClick(e) {
 }
 
 function handleDeleteRestroomSuccess(json) {
-
   var deletedRestroomId = json._id;
   $('div[data-restid=' + deletedRestroomId + ']').remove();
 }
 
-
 function renderMultipleRestrooms(restrooms) {
 	restrooms.forEach(function(restroom) {
-    renderBathroom(restroom);
+    renderBathroom(restroom);  
   });
-}
+};
+
+// function renderMultipleRestrooms(restrooms) {
+//   restrooms.forEach(function(restroom) {
+//     if(restroom.locationName == 'Starbucks'){
+//     renderBathroom(restroom);
+//     }   
+//   });
+// }
 
 
 
@@ -172,17 +177,22 @@ function renderMultipleRestrooms(restrooms) {
 
               <li class="list-group-item">
                 <h5 class="inline-header">Type</h5>
-                <span class="restroom-location">${json.type}</span>
+                <span class="restroom-type">${json.type}</span>
               </li>
 
               <li class="list-group-item">
                 <h5 class="inline-header">Cleanliness</h5>
-                <span class="restroom-location">${json.cleanliness}</span>
+                <span class="restroom-cleanliness">${json.cleanliness}</span>
               </li>
 
               <li class="list-group-item">
                 <h5 class="inline-header">Neighborhood</h5>
-                <span class="restroom-location">${json.neighborhood}</span>
+                <span class="restroom-neighborhood">${json.neighborhood}</span>
+              </li>
+
+              <li class="list-group-item">
+                <h5 class="inline-header">Review</h5>
+                <span class="restroom-review">${json.review}</span>
               </li>
             
             </ul>
