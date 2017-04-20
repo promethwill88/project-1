@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
   
-  // Global variable to carry all bathroom data
+  // Global variable to carry all bathroom datad
   var allMyRestrooms = [];
 
   console.log('app.js loaded!');
