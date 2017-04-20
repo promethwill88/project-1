@@ -47,8 +47,6 @@ $(document).ready(function() {
   });
 
 // AJAX call for restrooms for personal API
-  var $restroomList;
-  $restroomList = $('.list');
   $.ajax({
   	method: 'GET',
   	url: '/api/restroom',
@@ -56,10 +54,13 @@ $(document).ready(function() {
   	error: handleError
   });
 
-  $('#singlebutton').on('click', function(e) {
-    console.log('submit');
+  $('#form').submit(function(e) {
     e.preventDefault();
-    console.log($('#name'));
+    var data = $(this).serialize();
+    console.log(data);
+
+
+    // console.log($('#name'));
     // var $name = $('#name');
     // var $location = $('#location');
     // var $type = $('#type');
@@ -94,89 +95,83 @@ $(document).ready(function() {
 
 
 
-function renderMultipleRestrooms(restrooms) {
-	restrooms.forEach(function(restroom) {
-    renderBathroom(restroom);
-  });
-}
+  function renderMultipleRestrooms(restrooms) {
+  	restrooms.forEach(function(restroom) {
+      renderBathroom(restroom);
+    });
+  }
 
 
 
-// function handleDeleteRestroomClick(e) {
-//   var restroomId = $(this).parents('.restroom').data('restroom-id');
-//   $.ajax({
-//     url: '/api/restroom/' + restroomId,
-//     method: 'DELETE',
-//     success: handleDeleteRestroomSuccess
-//   });
-// }
+  // function handleDeleteRestroomClick(e) {
+  //   var restroomId = $(this).parents('.restroom').data('restroom-id');
+  //   $.ajax({
+  //     url: '/api/restroom/' + restroomId,
+  //     method: 'DELETE',
+  //     success: handleDeleteRestroomSuccess
+  //   });
+  // }
 
-// function handleDeleteRestroomSuccess(data) {
-//   var deletedRestroomId = data._id;
-//   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
-// }
-
-
-
-function handleError(e) {
-	console.log('error!!!!');
-	$('.list').text('failed to load restrooms');
-}
+  // function handleDeleteRestroomSuccess(data) {
+  //   var deletedRestroomId = data._id;
+  //   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
+  // }
 
 
 
-function renderBathroom(json) {
-  console.log('populating bathrooms', json);
+  function handleError(e) {
+  	console.log('error!!!!');
+  	$('.list').text('failed to load restrooms');
+  }
 
-  // console.log(json.loactionName);
-  
 
-  var bathroomAppend = (`
-        <div class="row-restroom" data-restroom-id="{restroom._id}">
-        
-        <div class="col m1">
+
+  function renderBathroom(json) {
+    console.log('populating bathrooms', json);
+ 
+    var bathroomAppend = (`
+          <div class="row-restroom" data-restroom-id="{restroom._id}">
           
-          <ul class="list-group">
+          <div class="col m1">
             
-            <li class="list-group-item">
-              <h5 class="inline-header">Name</h5>
-              <span class="restroom-name">${json.locationName}</span>
-            </li>
+            <ul class="list-group">
+              
+              <li class="list-group-item">
+                <h5 class="inline-header">Name</h5>
+                <span class="restroom-name">${json.locationName}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Location</h5>
-              <span class="restroom-location">${json.location}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Location</h5>
+                <span class="restroom-location">${json.location}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Type</h5>
-              <span class="restroom-location">${json.type}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Type</h5>
+                <span class="restroom-location">${json.type}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Cleanliness</h5>
-              <span class="restroom-location">${json.cleanliness}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Cleanliness</h5>
+                <span class="restroom-location">${json.cleanliness}</span>
+              </li>
 
-            <li class="list-group-item">
-              <h5 class="inline-header">Neighborhood</h5>
-              <span class="restroom-location">${json.neighborhood}</span>
-            </li>
+              <li class="list-group-item">
+                <h5 class="inline-header">Neighborhood</h5>
+                <span class="restroom-location">${json.neighborhood}</span>
+              </li>
+            
+            </ul>
           
-          </ul>
-        
+          </div>
+       
         </div>
-     
       </div>
-    </div>
 
-  `); 
+    `); 
 
-  $('#restrooms').prepend(bathroomAppend);
-
-}
-
-
+    $('#restrooms').prepend(bathroomAppend);
+  }
 
 });
 

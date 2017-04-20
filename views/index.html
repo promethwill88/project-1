@@ -48,47 +48,43 @@
   <div class="container"></div>
 </div>
 
-
-
 <!--Submit Form (Work in Progress)-->             
-      <div class="container">
-            
-            <form class="col s5">
+    <section id="restroom-form"> 
+      <div class="container">  
+            <form id="form" class="col s5">
               
               <div class="form-group">
                 <label class="col m4" for="name">Name</label>
                 <div class="col m4">
-                <input id="rest-name" name="locationName" type="text" class="form-input">
+                  <input id="rest-name" name="locationName" type="text" class="form-input">
                 </div>
               </div>
 
               <div class="form-group">
                  <label class="col m4" for="location">Location</label>
                 <div class="col m4">
-                <input id="rest-loc" name="location" type="text" class="form-input">
+                  <input id="rest-loc" name="location" type="text" class="form-input">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="col m4" for="type">Type</label>
                 <div class="col m4">
-                <input id="rest-type" name="type" type="text" class="form-input">
+                  <input id="rest-type" name="type" type="text" class="form-input">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="col m4" for="cleanliness">Cleanliness</label>
-                <form action="#">
-                  <p class="range-field">
-                    <input type="range" id="test5" min="0" max="10" />
-                  </p>
-                </form>
+                <div class="col m4">
+                  <input type="text" id="cleanliness" class="form-input">
+                </div>
               </div>
 
               <div class="form-group">
                 <label class="col m4" for="neighborhood">Neighborhood</label>
                 <div class="col m4">
-                  <input type="text" id="autocomplete-input" class="autocomplete">
+                  <input type="text" id="autocomplete-input" class="form-input">
                 </div>
               </div>
 
@@ -100,14 +96,13 @@
               </div>
 
               <div class="form-group">
-                <label class="col m4" for="save">Save Restroom</label>
                 <div class="col m4">
-                  <button id="singlebutton" name="singlebutton" class="btn">Submit</button>
+                  <button class="btn waves-effect waves-light" type="submit" name="action">Save Restroom</button>
                 </div>
               </div>
 
-          </form>
-
+            </form>
+        </section>
       </div>
 
   
