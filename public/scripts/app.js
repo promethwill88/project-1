@@ -65,7 +65,7 @@ $(document).ready(function() {
   });
   $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
   $('#restrooms').on('click', '#updatebutton', handleUpdateRestroomClick);
-  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
+  $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
     // var $name = $('#name');
     // var $location = $('#location');
     // var $type = $('#type');
@@ -96,13 +96,41 @@ $(document).ready(function() {
     var $restroomRow = $(this).closest('.row-restroom');
     var restroomId = $restroomRow.data('restid');
     console.log(restroomId);
-    var neighborhood = $restroomRow.find('i#neighborhood').text();
-    $restroomRow.find('i#neighborhood').html('<input class="edit-neiborhood" value="' + neighborhood + '"></input>');
-    var type = $restroomRow.find('i#type').text();
-    $restroomRow.find('i#type').html('<input class="edit-type" value="' + type + '"></input>');
-    var review = $restroomRow.find('i#review').text();
-    $restroomRow.find('i#review').html('<input class="edit-review" value="' + review + '"></input>');
+    var neighborhood = $restroomRow.find('p.neighborhood').text();
+    console.log(neighborhood);
+    $restroomRow.find('p.neighborhood').html('<input class="edit-neighborhood" value="' + neighborhood + '"></input>');
+    var type = $restroomRow.find('p.type').text();
+    $restroomRow.find('p.type').html('<input class="edit-type" value="' + type + '"></input>');
+    var review = $restroomRow.find('p.review').text();
+    $restroomRow.find('p.review').html('<input class="edit-review" value="' + review + '"></input>');
   }
+
+  function handleSaveRestroomClick(e) {
+    var restroomId = $(this).parents('.row-restroom').data('restid');
+    var $restroomRow = $('[data-restid=' + restroomId + ']');
+    console.log($restroomRow)
+    var data = {
+      neighborhood: $restroomRow.find('.edit-neighborhood').val(),
+      type: $restroomRow.find('.edit-type').val(),
+      review: $restroomRow.find('.edit-review').val()
+    };
+    console.log(data);
+    $.ajax({
+      method: 'PUT',
+      url: '/api/restroom/' + restroomId,
+      data: data,
+      success: handleRestroomUpdatedResponse
+    });
+  }
+
+  function handleRestroomUpdatedResponse(data) {
+
+   console.log(data);
+   var restroomId = data._id;
+   $('[data-restid=' + restroomId + ']').remove();
+   renderBathroom(data);
+  }
+
 
 
   function handleDeleteRestroomClick(e) {
@@ -150,9 +178,9 @@ $(document).ready(function() {
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <p><i class="tiny material-icons prefix" id="neighborhood">business</i> ${json.neighborhood}</p>
-              <p><i class="tiny material-icons prefix" id="type">info</i> ${json.type}</p>
-              <p><i class="tiny material-icons prefix" id="review">stars</i> ${json.review}</p>
+              <p class="neighborhood"><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
+              <p class="type"><i class="tiny material-icons prefix">info</i> ${json.type}</p>
+              <p class="review"><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">import_export</i>update</a>  
               <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
               <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">Save</i>Save</a>
