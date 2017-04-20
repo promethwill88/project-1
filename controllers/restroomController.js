@@ -40,7 +40,7 @@ function show(req, res) {
 // DELETE /api/restrooms/:restroomId
 function destroy(req, res) {
   // find one restroom and delete it
-  db.Restroom.findOneAndRemove({ _id: req.params.restRoomId}, function(err, foundRestroom) {
+  db.Restroom.findOneAndRemove({ _id: req.params.restroomId}, function(err, foundRestroom) {
     res.json(foundRestroom);
   });
 }
@@ -49,7 +49,7 @@ function destroy(req, res) {
 function update(req, res) {
   // find one restroom by id, update it based on request body,
   // and send it back as JSON
-  db.Restroom.findById(req.params.restRoomId, function(err, foundRestroom) {
+  db.Restroom.findById(req.params.restroomId, function(err, foundRestroom) {
     if(err) { throw err; } 
     foundRestroom.location = req.body.location;
     foundRestroom.locationName = req.body.locationName;

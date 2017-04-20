@@ -47,20 +47,29 @@ $(document).ready(function() {
   });
 
 // AJAX call for restrooms for personal API
+
   $.ajax({
   	method: 'GET',
   	url: '/api/restroom',
   	success: renderMultipleRestrooms,
-  	error: handleError
+    error: handleError
   });
 
-  $('#form').submit(function(e) {
+  // when the form is submited, create new restroom
+  $('#restroom-form form').on('submit', function(e) {
+    console.log('submit worked!');
     e.preventDefault();
-    var data = $(this).serialize();
-    console.log(data);
+    var formData = $(this).serialize();
+    $.post('/api/restroom', formData, function(restroom) {
+      console.log("formdata"); //render server's response
+      renderBathroom(restroom);
+    });
+    $(this).trigger("reset");
+  });
 
 
-    // console.log($('#name'));
+
+  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
     // var $name = $('#name');
     // var $location = $('#location');
     // var $type = $('#type');
@@ -91,15 +100,28 @@ $(document).ready(function() {
  
 
 
+function handleDeleteRestroomClick(e) {
+  var restroomId = $(this).parents('.row-restroom').data('restid');
+  console.log(restroomId);
+  $.ajax({
+    url: '/api/restroom/' + restroomId,
+    method: 'DELETE',
+    success: handleDeleteRestroomSuccess
+  });
+}
+
+function handleDeleteRestroomSuccess(json) {
+
+  var deletedRestroomId = json._id;
+  $('div[data-restid=' + deletedRestroomId + ']').remove();
+}
 
 
-
-
-  function renderMultipleRestrooms(restrooms) {
-  	restrooms.forEach(function(restroom) {
-      renderBathroom(restroom);
-    });
-  }
+function renderMultipleRestrooms(restrooms) {
+	restrooms.forEach(function(restroom) {
+    renderBathroom(restroom);
+  });
+}
 
 
 
@@ -124,13 +146,15 @@ $(document).ready(function() {
   	$('.list').text('failed to load restrooms');
   }
 
-
-
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
- 
-    var bathroomAppend = (`
-          <div class="row-restroom" data-restroom-id="{restroom._id}">
+
+
+  var bathroomAppend = (`
+        <div class="row-restroom" data-restid="${json._id}">
+        
+        <div class="col m1">
+
           
           <div class="col m1">
             
@@ -163,8 +187,13 @@ $(document).ready(function() {
             
             </ul>
           
+
           </div>
        
+
+          </ul>
+          <button id="deletebutton" name="deletebutton" class="btn">Delete</button>
+
         </div>
       </div>
 
@@ -173,7 +202,7 @@ $(document).ready(function() {
     $('#restrooms').prepend(bathroomAppend);
   }
 
-});
+
 
 
 
