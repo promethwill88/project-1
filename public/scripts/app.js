@@ -47,19 +47,25 @@ $(document).ready(function() {
   });
 
 // AJAX call for restrooms for personal API
-  var $restroomList;
-  $restroomList = $('.list');
+  
   $.ajax({
   	method: 'GET',
   	url: '/api/restroom',
   	success: renderMultipleRestrooms,
-  	error: handleError
+    error: handleError
   });
 
-  $('#singlebutton').on('click', function(e) {
-    console.log('submit');
+  // when the form is submited, create new restroom
+  $('#restroom-form form').on('submit', function(e) {
+    console.log('submit worked!');
     e.preventDefault();
-    console.log($('#name'));
+    var formData = $(this).serialize();
+    $.post('/api/restroom', formData, function(restroom) {
+      console.log("formdata"); //render server's response
+      renderBathroom(restroom);
+    });
+    $(this).trigger("reset");
+  });
     // var $name = $('#name');
     // var $location = $('#location');
     // var $type = $('#type');
@@ -178,7 +184,7 @@ function renderBathroom(json) {
 
 
 
-});
+
 
 
 
