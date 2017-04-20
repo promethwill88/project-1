@@ -96,9 +96,12 @@ $(document).ready(function() {
     var $restroomRow = $(this).closest('.row-restroom');
     var restroomId = $restroomRow.data('restid');
     console.log(restroomId);
-    // var locationName = $restroomRow.find('span#locationName').text();
     // var location = $restroomRow.find('p#location').text();
+    // $restroomRow.find('p#location').html('<input class="edit-location" value="' + location + '"></input>');
+    // var locationName = $restroomRow.find('span#locationName').text();
+    // $restroomRow.find('span#locationName').html('<input class="edit-locationName" value="' + locationName + '"></input>');
     // var cleanliness = $restroomRow.find('p#cleanliness').text();
+    // $restroomRow.find('p#cleanliness').html('<input class="edit-cleanliness" value="' + cleanliness + '"></input>');
     var neighborhood = $restroomRow.find('p.neighborhood').text();
     $restroomRow.find('p.neighborhood').html('<input class="edit-neighborhood" value="' + neighborhood + '"></input>');
     var type = $restroomRow.find('p.type').text();
@@ -112,14 +115,14 @@ $(document).ready(function() {
     var $restroomRow = $('[data-restid=' + restroomId + ']');
     console.log($restroomRow)
     var data = {
-      // locationName: $restroomRow.find('span#locationName').val(),
-      // location: $restroomRow.find('p#location').val(),
-      // cleanliness: $restroomRow.find('p#cleanliness').val(),
+      // cleanliness: $restroomRow.find('.edit-cleanliness').val(),
+      // location: $restroomRow.find('.edit-location').val(),
+      // locationName: $restroomRow.find('.edit-locationName').val(),
       neighborhood: $restroomRow.find('.edit-neighborhood').val(),
       type: $restroomRow.find('.edit-type').val(),
       review: $restroomRow.find('.edit-review').val()
     };
-
+    console.log(data);
     $.ajax({
       method: 'PUT',
       url: '/api/restroom/' + restroomId,
@@ -177,9 +180,9 @@ $(document).ready(function() {
             <div class="card-image waves-effect waves-block waves-light">
             </div>
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
-              <p><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
-              <p><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
+              <span id="locationName" class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
+              <p id="location"><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
+              <p id="cleanliness"><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
