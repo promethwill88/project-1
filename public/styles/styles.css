@@ -1,5 +1,5 @@
 .jumbotron {
-	padding-bottom: 200px;
+	padding-bottom: 500px;
 	background: url(../images/background.jpg) no-repeat center center fixed; 
 	  -webkit-background-size: cover;
 	  -moz-background-size: cover;
@@ -7,12 +7,12 @@
 	  background-size: cover;
 }
 
-#neighborhood-search {
-	padding-top: 100px;
+#header {
+	padding-top: 80px;
 }
 
-.input-field {
- 	color: #ffffff;
+#neighborhood-search {
+	padding-top: 100px;
 }
 
 img {
@@ -25,3 +25,29 @@ img {
 	font-size: 45px;
 	padding-left: 20px;
 }	
+
+.row-restroom {
+	padding-left: 80px;
+	padding-right: 80px;
+
+}
+
+.form-header {
+	padding-left: 230px;
+	padding-top: 50px;
+
+}
+
+form {
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+footer {
+	margin-top: 100px;
+}
+
+#smalllogo {
+	height: 40px;
+	width: 40px;
+}

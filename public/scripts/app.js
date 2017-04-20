@@ -1,6 +1,5 @@
 // CLIENT-SIDE JS
 
-
 $(document).ready(function() {
   
   console.log('app.js loaded!');
@@ -91,7 +90,7 @@ $(document).ready(function() {
     // $.post(restroomPostToServerUrl, dataToPos, function(data) {
     //   console.log("data received")
     //   });
-  });
+
 
     // var formData = $(this).serialize();
     // $.post('/api/restroom', formData, function(restroom) {
@@ -99,52 +98,36 @@ $(document).ready(function() {
     // });
     // $(this).trigger("reset");
  
-function handleDeleteRestroomClick(e) {
-  var restroomId = $(this).parents('.row-restroom').data('restid');
-  console.log(restroomId);
-  $.ajax({
-    url: '/api/restroom/' + restroomId,
-    method: 'DELETE',
-    success: handleDeleteRestroomSuccess
-  });
-}
+  function handleDeleteRestroomClick(e) {
+    var restroomId = $(this).parents('.row-restroom').data('restid');
+    console.log(restroomId);
+    $.ajax({
+      url: '/api/restroom/' + restroomId,
+      method: 'DELETE',
+      success: handleDeleteRestroomSuccess
+    });
+  }
 
-function handleDeleteRestroomSuccess(json) {
-  var deletedRestroomId = json._id;
-  $('div[data-restid=' + deletedRestroomId + ']').remove();
-}
+  function handleDeleteRestroomSuccess(json) {
+    var deletedRestroomId = json._id;
+    $('div[data-restid=' + deletedRestroomId + ']').remove();
+  }
 
-function renderMultipleRestrooms(restrooms) {
-	restrooms.forEach(function(restroom) {
-    renderBathroom(restroom);  
-  });
-};
-
-// function renderMultipleRestrooms(restrooms) {
-//   restrooms.forEach(function(restroom) {
-//     if(restroom.locationName == 'Starbucks'){
-//     renderBathroom(restroom);
-//     }   
-//   });
-// }
+  function renderMultipleRestrooms(restrooms) {
+  	restrooms.forEach(function(restroom) {
+      renderBathroom(restroom);  
+    });
+  };
 
 
-
-  // function handleDeleteRestroomClick(e) {
-  //   var restroomId = $(this).parents('.restroom').data('restroom-id');
-  //   $.ajax({
-  //     url: '/api/restroom/' + restroomId,
-  //     method: 'DELETE',
-  //     success: handleDeleteRestroomSuccess
-  //   });
-  // }
-
-  // function handleDeleteRestroomSuccess(data) {
-  //   var deletedRestroomId = data._id;
-  //   $('div[data-restroom-id=' + deletedRestroomId + ']').remove();
-  // }
-
-
+  // Testing function for displaying filtered by name and/or neighborhoods
+    // function renderMultipleRestrooms(restrooms) {
+    //   restrooms.forEach(function(restroom) {
+    //     if(restroom.locationName == 'Starbucks'){
+    //     renderBathroom(restroom);
+    //     }   
+    //   });
+    // }
 
   function handleError(e) {
   	console.log('error!!!!');
@@ -154,64 +137,41 @@ function renderMultipleRestrooms(restrooms) {
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
 
+    var bathroomAppend = (`
+      <div class="container">
+        <div class="row-restroom" data-restid="${json._id}">            
+          <div class="card small">
+            <div class="card-image waves-effect waves-block waves-light">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
+              <p><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
+              <p><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
 
-  var bathroomAppend = (`
-        <div class="row-restroom" data-restid="${json._id}">
-        
-        <div class="col m1">
-
-          
-          <div class="col m1">
-            
-            <ul class="list-group">
-              
-              <li class="list-group-item">
-                <h5 class="inline-header">Name</h5>
-                <span class="restroom-name">${json.locationName}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Location</h5>
-                <span class="restroom-location">${json.location}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Type</h5>
-                <span class="restroom-type">${json.type}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Cleanliness</h5>
-                <span class="restroom-cleanliness">${json.cleanliness}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Neighborhood</h5>
-                <span class="restroom-neighborhood">${json.neighborhood}</span>
-              </li>
-
-              <li class="list-group-item">
-                <h5 class="inline-header">Review</h5>
-                <span class="restroom-review">${json.review}</span>
-              </li>
-            
-            </ul>
-          
-
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
+              <p><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
+              <p><i class="tiny material-icons prefix">info</i> ${json.type}</p>
+              <p><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
+              <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">import_export</i>update</a>  
+              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
+            </div>
           </div>
-       
-
-          </ul>
-          <button id="deletebutton" name="deletebutton" class="btn">Delete</button>
-
         </div>
       </div>
+      `); 
 
-    `); 
-
-    $('#restrooms').prepend(bathroomAppend);
+      $('#restrooms').prepend(bathroomAppend);
   }
 
+
+
+
+
+
+
+});
 
 
 

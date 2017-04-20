@@ -7,7 +7,6 @@
     <title>Project 1</title>
 
     <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
@@ -15,6 +14,9 @@
    
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+    <!-- Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
@@ -31,153 +33,86 @@
       <div class="container">
         <div class="row" id="header">
           <div class="col m1"><img src="../images/tolietlogo.png" /></div>
-          <div class="col m1"><span id="name">atmo</span></div>
+          <div class="col m1"><span id="name">atmos</span></div>
         </div>
 
         <div class="row" id="neighborhood-search">
           <div class="input-field col offset-m3 s6">
-            <input type="text" id="autocomplete-input" class="autocomplete">
-            <label for="autocomplete-input">neighborhoods</label>
+          <i class="material-icons prefix">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete white-text">
+            <label for="autocomplete-input">neighborhood</label>
           </div>
         </div>
       </div>
     </div>
-    
+
 <!--Seed data container-->
-<div id="restrooms">
-  <div class="container">
-    
-<!-- Begin card prototyping-->
-    <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">${json.locationName}</span>
-              <p>${json.location}</p>
-              <p>${json.neighborhood}</p>
-            </div>
-            <div class="card-tabs">
-              <ul class="tabs tabs-fixed-width">
-                <li class="tab"><a href="#test4">Type</a></li>
-                <li class="tab"><a class="active" href="#test5">Cleanliness</a></li>
-                <li class="tab"><a href="#test6">Reviews</a></li>
-              </ul>
-            </div>
-            <div class="card-content grey lighten-4">
-              <div id="test4">${json.type}</div>
-              <div id="test5">${json.cleanliness}</div>
-              <div id="test6">${json.review}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-     
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End prototyping -->
-  </div>
-</div>
+<div id="restrooms"></div>
 
 <!--Submit Form (Work in Progress)-->    
-    <section id='restroom-form'>         
+    <div class="form-header">
+
+    </div>
+   
+   <section id='restroom-form'>         
       <div class="container">
             
-        <form class="col s5" >      
+        <form>      
           
-          <div class="form-group">
-            <label class="col m4" for="name">Name</label>
-            <div class="col m4">
-              <input id="rest-name" name="locationName" type="text" class="form-input">
-            </div>
+          <div class="form-group"><i class="small material-icons prefix">store</i>
+            <input placeholder="business name" id="rest-name" name="locationName" type="text" class="form-input">
           </div>
 
-          <div class="form-group">
-             <label class="col m4" for="location">Location</label>
-            <div class="col m4">
-              <input id="rest-loc" name="location" type="text" class="form-input">
-            </div>
+          <div class="form-group"><i class="small material-icons prefix">location_on</i>
+            <input placeholder="address" id="rest-loc" name="location" type="text" class="form-input">
           </div>
 
-          <div class="form-group">
-            <label class="col m4" for="type">Type</label>
-            <div class="col m4">
-              <input id="rest-type" name="type" type="text" class="form-input">
-            </div>
+          <div class="form-group"><i class="small material-icons prefix">info</i>
+            <input placeholder="type" id="rest-type" name="type" type="text" class="form-input">
           </div>
 
-          <div class="form-group">
-            <label class="col m4" for="cleanliness">Cleanliness</label>
-            <div class="col m4">
-              <input id="rest-clean" name="cleanliness" type="text" class="form-input">
-            </div>
+          <div class="form-group"><i class="small material-icons prefix">loyalty</i> 
+            <input placeholder="cleanliness (0 - 10)" id="rest-clean" name="cleanliness" type="text" class="form-input">
           </div>
 
-          <div class="form-group">
-            <label class="col m4" for="neighborhood">Neighborhood</label>
-            <div class="col m4">
-              <input id="rest-hood" name="neighborhood" type="text" class="form-input">
-            </div>
+          <div class="form-group"><i class="small material-icons prefix">business</i> 
+            <input placeholder="neighborhood" id="rest-hood" name="neighborhood" type="text" class="form-input">
           </div>
 
-          <div class="form-group">
-            <label class="col m4" for="review">Review</label>
-            <div class="col m4">
-              <input id="rest-review" name="review" type="text" class="form-input">
-            </div>
+          <div class="form-group"><i class="small material-icons prefix">stars</i> 
+              <input placeholder="enter review" id="rest-review" name="review" type="text" class="form-input" data-length="60">
           </div>
 
           <div class="form-group">
             <div class="col m4">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Save Restroom</button>
+            <br>
+              <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Save Restroom<i class="material-icons right">send</i></button>
             </div> 
           </div>
-        
+
         </form>
         
       </div>
 
     </section>
+
+  <footer class="page-footer blue lighten-2">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">About atmos</h5>
+                <p class="white-text">We are a pair of like-minded individuals who strive to provide the world with an easier tool to look for spots to pee.</p>
+                <p class="white-text">~ W and S</p>
+                <img id="smalllogo" src="../images/tolietlogo.png" />
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 atmos
+            </div>
+          </div>
+        </footer>
   
   </body>
 
