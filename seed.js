@@ -25,7 +25,7 @@ var restroom_list =[
     locationName: "CVS",
     type: "Store",
     cleanliness: 3,
-    neighborhood: "Mission",
+    neighborhood: "Mission District",
     review: "not bad"
   },
   {
