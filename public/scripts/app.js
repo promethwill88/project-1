@@ -65,8 +65,6 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
-
-   // catch and handle the click on button
   $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
   $('#restrooms').on('click', '#updatebutton', handleUpdateRestroomClick);
   $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
@@ -75,18 +73,11 @@ $(document).ready(function() {
     var $restroomRow = $(this).closest('.row-restroom');
     var restroomId = $restroomRow.data('restid');
     console.log(restroomId);
-    // var location = $restroomRow.find('p#location').text();
-    // $restroomRow.find('p#location').html('<input class="edit-location" value="' + location + '"></input>');
-    // var locationName = $restroomRow.find('span#locationName').text();
-    // $restroomRow.find('span#locationName').html('<input class="edit-locationName" value="' + locationName + '"></input>');
-    // var cleanliness = $restroomRow.find('p#cleanliness').text();
-    // $restroomRow.find('p#cleanliness').html('<input class="edit-cleanliness" value="' + cleanliness + '"></input>');
     var neighborhood = $restroomRow.find('p.neighborhood').text();
     $restroomRow.find('p.neighborhood').html('<input class="edit-neighborhood" value="' + neighborhood + '"></input>');
     var type = $restroomRow.find('p.type').text();
     $restroomRow.find('p.type').html('<input class="edit-type" value="' + type + '"></input>');
     var review = $restroomRow.find('p.review').text();
-    console.log(review);
     $restroomRow.find('p.review').html('<input class="edit-review" value="' + review + '"></input>');
   }
 
@@ -95,9 +86,6 @@ $(document).ready(function() {
     var $restroomRow = $('[data-restid=' + restroomId + ']');
     console.log($restroomRow)
     var data = {
-      // cleanliness: $restroomRow.find('.edit-cleanliness').val(),
-      // location: $restroomRow.find('.edit-location').val(),
-      // locationName: $restroomRow.find('.edit-locationName').val(),
       neighborhood: $restroomRow.find('.edit-neighborhood').val(),
       type: $restroomRow.find('.edit-type').val(),
       review: $restroomRow.find('.edit-review').val()
@@ -160,6 +148,7 @@ $(document).ready(function() {
 
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
+
     var bathroomAppend = (`
       <div class="container">
         <div class="row-restroom" data-restid="${json._id}">            
@@ -173,12 +162,12 @@ $(document).ready(function() {
             </div>
             <div class="card-reveal">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <p class="neighborhood"><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
-              <p class="type"><i class="tiny material-icons prefix">info</i> ${json.type}</p>
-              <p class="review"><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
-              <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">import_export</i>update</a>  
+              <i class="tiny material-icons prefix">business</i><p class="neighborhood"> ${json.neighborhood}</p>
+              <i class="tiny material-icons prefix">info</i><p class="type"> ${json.type}</p>
+              <i class="tiny material-icons prefix">stars</i><p class="review"> ${json.review}</p>
+              <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">mode_edit</i>update</a>  
               <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
-              <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">Save</i>Save</a>
+              <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">play_for_work</i>Save</a>
             </div>
           </div>
         </div>

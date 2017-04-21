@@ -49,7 +49,6 @@ var review_list = [
   }
 ];
 
-
   restroom_list.forEach(function(restroom) {
     restroom.review = review_list;
     console.log(restroom);
@@ -69,42 +68,3 @@ db.Restroom.remove({}, function(err, restrooms){
    }); //closes forEach loop
  });//closes album create function
 }); //closes album remove function
-
-// db.Restroom.remove({}, function(err, restrooms){
-//   console.log('removed all restrooms')
-//   db.Restroom.create(restroom_list, function(err, restrooms){
-//     if (err){ 
-//       return console.log('ERROR', err); 
-//     }
-//     restroom_list.forEach(function(restroom) {
-//       db.Review.create(review_list, function(err, reviews){
-//         if (err){
-//           return console.log('ERROR', err);
-//         }
-//         restroom.review = reviews
-//         // restroom.save(function(err, succ){
-//         //   console.log('Added review');
-//         // });
-//       });
-//     });
-//     console.log("created", restrooms.length, "restrooms");
-// });
-// });
-
-// db.Restroom.remove({}, function(err, restrooms){
-//  db.Restroom.create(restroom_list, function(err, createdRestrooms){
-//    if (err) { return console.log('ERROR', err); }
-//    console.log("all restrooms:", createdRestrooms);
-//    createdRestrooms.forEach(function stuffFullofReviews(restroom){
-//      db.Review.create(review_list, function(err, dbReviews){
-//        if (err) { return console.log('ERROR', err); }
-//        console.log("REVIEWS: ",dbReviews.length);
-//        restroom.songs=dbReviews;
-//        restroom.save(function(err, succ){
-//          console.log("Added review");
-//        });//closes save function
-//      });//closes song create function
-//    }); //closes forEach loop
-//    console.log("created", createdRestrooms.length, "restrooms");
-//  });//closes album create function
-// }); //closes album remove function
