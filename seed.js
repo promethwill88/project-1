@@ -133,10 +133,10 @@ var review_list = [
   }
 ];
 
-  restroom_list.forEach(function(restroom) {
-    restroom.review = review_list;
-    console.log(restroom);
-  });
+restroom_list.forEach(function(restroom){
+  restroom.review = review_list;
+  console.log(restroom);
+});
 
 db.Restroom.remove({}, function(err, restrooms){
  db.Restroom.create(restroom_list, function(err, createdRestrooms){
@@ -146,7 +146,7 @@ db.Restroom.remove({}, function(err, restrooms){
    createdRestrooms.forEach(function stuffFullofReviews(restroom){
      db.Review.create(review_list, function(err, createdReviews){
         if (err){
-        return console.log('ERROR', err); 
+          return console.log('ERROR', err); 
         }
         restroom.review = createdReviews;
         restroom.save(function(err, succ){

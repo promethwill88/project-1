@@ -40,7 +40,7 @@ $(document).ready(function(e) {
     onAutocomplete: function(val) {
       console.log(val);
       // Callback function when value is autocompleted.
-    renderFilteredRestrooms(val);
+      renderFilteredRestrooms(val);
     },
     
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
@@ -140,9 +140,9 @@ $(document).ready(function(e) {
       // Clear page of results
       $('#restrooms').empty();
       allMyRestrooms.forEach(function(restroom) {
-        if(restroom.neighborhood === filter){
-          renderBathroom(restroom);
-        }   
+      if(restroom.neighborhood === filter){
+        renderBathroom(restroom);
+      }   
       });
     };
 
