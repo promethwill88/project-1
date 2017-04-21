@@ -152,7 +152,7 @@ $(document).ready(function() {
     var bathroomAppend = (`
       <div class="container">
         <div class="row-restroom" data-restid="${json._id}">            
-          <div class="card small">
+          <div class="card blue lighten-5">
             <div class="card-image waves-effect waves-block waves-light">
             </div>
             <div class="card-content">
