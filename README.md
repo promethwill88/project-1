@@ -17,10 +17,7 @@ Will Fong, Sejin Park
 
 # Description
 
-This app helps clients find bathroom close to the search area 
-and shows the information about the bathroom.
-Clients can add new bathroom and also can update the information of the bathroom
-which is already existing.
+Airpnp helps folks find public restrooms in San Francisco. Users can use autocomplete search to help narrow their search. Returned results show information about restrooms including clealiness rating, business name, address, and any user reviews. Users are able to create, read, update (review, neighborhood, & type), and delete existing restroom records.
 
 # Information included
 
@@ -41,7 +38,6 @@ which is already existing.
     });
   };
 
-
  // function for displaying filtered by name and/or neighborhoods
     function renderFilteredRestrooms(filter) {
       // Clear page of results
@@ -53,13 +49,14 @@ which is already existing.
       });
     };
 ```
+
 Why I'm proud: Wrote out a way to filter results based on autocomplete search. allMyRestroom is a global var with an empty array. Once successful AJAX call to GET from db, allRestrooms gets filled. For renderMultipleRestrooms function, it loads the page upon start. renderFilteredRestrooms clears the page, then finds matches with data that matches a certain criteria (in this case filter = parameter passed through by Autocomplete AJAX call. In this case neighborhood), then returns those results. (Done with Cory's help).
 
 # Screenshots:
-![alt tag](../images/SS1.png)
-![alt tag](../images/SS2.png)
-![alt tag](../images/SS3.png)
-![alt tag](../images/SS4.png)
-![alt tag](../images/SS5.png)
-![alt tag](../images/SS6.png)
+![alt tag](./images/SS1.png)
+![alt tag](./images/SS2.png)
+![alt tag](./images/SS3.png)
+![alt tag](./images/SS4.png)
+![alt tag](./images/SS5.png)
+![alt tag](./images/SS6.png)
 
