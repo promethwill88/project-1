@@ -156,11 +156,11 @@ $(document).ready(function() {
             <div class="card-image waves-effect waves-block waves-light">
             </div>
             <div class="card-content">
-              <span id="locationName" class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
+              <span id="locationName" class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix" id="storeicon">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
               <p id="location"><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
               <p id="cleanliness"><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
             </div>
-            <div class="card-reveal">
+            <div class="card-reveal yellow lighten-4">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
               <i class="tiny material-icons prefix">business</i><p class="neighborhood"> ${json.neighborhood}</p>
               <i class="tiny material-icons prefix">info</i><p class="type"> ${json.type}</p>

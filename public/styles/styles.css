@@ -26,6 +26,10 @@ h3 {
     color: #ffffff;
 }
 
+#storeicon{
+	color: #ec407a;
+}
+
 h3 span {
     color: #64b5f6;
 }
@@ -54,6 +58,14 @@ img {
     padding-left: 80px;
     padding-right: 80px;
 
+}
+
+#invertcolors{
+	color: #6d4c41;
+}
+
+h4 {
+	color: #64b5f6;
 }
 
 .form-header {
