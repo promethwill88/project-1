@@ -36,33 +36,75 @@ var restroom_list = [
 
 var review_list = [
   {
-    review: "Awful atmosphere. I couldn't let loose."
+    comment: "Awful atmosphere. I couldn't let loose."
   },
   {
-    review: "Free to use, didn't need to buy anything. Could use a bit of redecorating."
+    comment: "Free to use, didn't need to buy anything. Could use a bit of redecorating."
   },
   {
-    review: "Plenty of tp. A joy to use. Friendly staff."
+    comment: "Plenty of tp. A joy to use. Friendly staff."
   },
   {
-    review: "I rather not return here. But if I was close to exploding, I wouldn't say no."
+    comment: "I rather not return here. But if I was close to exploding, I wouldn't say no."
   }
 ];
 
-// add all songs to each album's song list
-restroom_list.forEach(function(restroom) {
-  restroom.review = review_list;
-});
 
-db.Restroom.remove({}, function(err, restrooms){
-  console.log('removed all restrooms')
-  db.Restroom.create(restroom_list, function(err, restrooms){
-    if (err){ 
-      return console.log('ERROR', err); 
-    }
-    console.log("all restrooms:", restrooms);
-    console.log("created", restrooms.length, "restrooms");
-    process.exit();
+  restroom_list.forEach(function(restroom) {
+    restroom.review = review_list;
+    console.log(restroom);
   });
 
-});
+db.Restroom.remove({}, function(err, restrooms){
+ db.Restroom.create(restroom_list, function(err, createdRestrooms){
+   if (err) { return console.log('ERROR', err); }
+   createdRestrooms.forEach(function stuffFullofReviews(restroom){
+     db.Review.create(review_list, function(err, createdReviews){
+       if (err) { return console.log('ERROR', err); }
+       restroom.review=createdReviews;
+       restroom.save(function(err, succ){
+         console.log("Added review");
+       });//closes save function
+     });//closes review create function
+   }); //closes forEach loop
+ });//closes album create function
+}); //closes album remove function
+
+// db.Restroom.remove({}, function(err, restrooms){
+//   console.log('removed all restrooms')
+//   db.Restroom.create(restroom_list, function(err, restrooms){
+//     if (err){ 
+//       return console.log('ERROR', err); 
+//     }
+//     restroom_list.forEach(function(restroom) {
+//       db.Review.create(review_list, function(err, reviews){
+//         if (err){
+//           return console.log('ERROR', err);
+//         }
+//         restroom.review = reviews
+//         // restroom.save(function(err, succ){
+//         //   console.log('Added review');
+//         // });
+//       });
+//     });
+//     console.log("created", restrooms.length, "restrooms");
+// });
+// });
+
+// db.Restroom.remove({}, function(err, restrooms){
+//  db.Restroom.create(restroom_list, function(err, createdRestrooms){
+//    if (err) { return console.log('ERROR', err); }
+//    console.log("all restrooms:", createdRestrooms);
+//    createdRestrooms.forEach(function stuffFullofReviews(restroom){
+//      db.Review.create(review_list, function(err, dbReviews){
+//        if (err) { return console.log('ERROR', err); }
+//        console.log("REVIEWS: ",dbReviews.length);
+//        restroom.songs=dbReviews;
+//        restroom.save(function(err, succ){
+//          console.log("Added review");
+//        });//closes save function
+//      });//closes song create function
+//    }); //closes forEach loop
+//    console.log("created", createdRestrooms.length, "restrooms");
+//  });//closes album create function
+// }); //closes album remove function

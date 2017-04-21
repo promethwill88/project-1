@@ -65,6 +65,8 @@ $(document).ready(function() {
     });
     $(this).trigger("reset");
   });
+
+   // catch and handle the click on button
   $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
   $('#restrooms').on('click', '#updatebutton', handleUpdateRestroomClick);
   $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
@@ -84,6 +86,7 @@ $(document).ready(function() {
     var type = $restroomRow.find('p.type').text();
     $restroomRow.find('p.type').html('<input class="edit-type" value="' + type + '"></input>');
     var review = $restroomRow.find('p.review').text();
+    console.log(review);
     $restroomRow.find('p.review').html('<input class="edit-review" value="' + review + '"></input>');
   }
 

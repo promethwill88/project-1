@@ -5,6 +5,6 @@ var ReviewSchema = new Schema({
   comment: String
 });
 
-var Review = mongoose.model('review', ReviewSchema);
+var Review = mongoose.model('Review', ReviewSchema);
 
 module.exports = Review;

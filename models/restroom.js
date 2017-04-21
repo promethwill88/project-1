@@ -13,6 +13,6 @@ var RestroomSchema = new Schema({
 });
 
 
-var Restroom = mongoose.model('restroom', RestroomSchema);
+var Restroom = mongoose.model('Restroom', RestroomSchema);
 
 module.exports = Restroom;
