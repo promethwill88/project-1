@@ -3,6 +3,8 @@
 
 var db = require("./models");
 
+var restroomGlobal = [];
+
 var restroom_list = [ 
   {
     location: "225 Bush St",
@@ -52,11 +54,12 @@ var review_list = [
 // add all songs to each album's song list
 restroom_list.forEach(function(restroom) {
   restroom.review = review_list;
+  restroomGlobal.push(restroom);
 });
 
 db.Restroom.remove({}, function(err, restrooms){
   console.log('removed all restrooms')
-  db.Restroom.create(restroom_list, function(err, restrooms){
+  db.Restroom.create(restroomGlobal, function(err, restrooms){
     if (err){ 
       return console.log('ERROR', err); 
     }
@@ -64,5 +67,7 @@ db.Restroom.remove({}, function(err, restrooms){
     console.log("created", restrooms.length, "restrooms");
     process.exit();
   });
+
+  console.log(restroomGlobal);
 
 });
