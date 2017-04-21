@@ -140,15 +140,19 @@ var review_list = [
 
 db.Restroom.remove({}, function(err, restrooms){
  db.Restroom.create(restroom_list, function(err, createdRestrooms){
-   if (err) { return console.log('ERROR', err); }
+    if (err){ 
+      return console.log('ERROR', err);
+    }
    createdRestrooms.forEach(function stuffFullofReviews(restroom){
      db.Review.create(review_list, function(err, createdReviews){
-       if (err) { return console.log('ERROR', err); }
-       restroom.review=createdReviews;
-       restroom.save(function(err, succ){
+        if (err){
+        return console.log('ERROR', err); 
+        }
+        restroom.review = createdReviews;
+        restroom.save(function(err, succ){
          console.log("Added review");
-       });//closes save function
-     });//closes review create function
-   }); //closes forEach loop
- });//closes album create function
-}); //closes album remove function
+        });
+     });
+    });
+ });
+});

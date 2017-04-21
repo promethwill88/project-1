@@ -1,5 +1,5 @@
 // CLIENT-SIDE JS
-$(document).ready(function() {
+$(document).ready(function(e) {
   
   // Global variable to carry all bathroom data
   var allMyRestrooms = [];
@@ -46,7 +46,13 @@ $(document).ready(function() {
     minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
     
   });
-// AJAX call for restrooms for personal API
+
+  // Reload search button
+  $('#reload').on('click', function(e) {
+    location = location;
+  });
+
+  // AJAX call for restrooms for personal API
   $.ajax({
     method: 'GET',
     url: '/api/restroom',
