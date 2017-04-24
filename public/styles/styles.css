@@ -1,6 +1,6 @@
 .jumbotron {
-    padding-bottom: 200px;
-    background: url(../images/background.jpeg) no-repeat center center fixed; 
+    padding-bottom: 50px;
+    background: url(../images/background1.jpg) no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -12,8 +12,12 @@
 }
 
 #neighborhood-search {
-    padding-top: 40px;
+    padding-top: 10px;
 
+}
+
+#reload {
+	margin-top: 10px;
 }
 
 #titletext {
@@ -24,6 +28,10 @@
 h3 {
     font-family: 'Open Sans', sans-serif;
     color: #ffffff;
+}
+
+#storeicon{
+	color: #ec407a;
 }
 
 h3 span {
@@ -54,6 +62,14 @@ img {
     padding-left: 80px;
     padding-right: 80px;
 
+}
+
+#invertcolors{
+	color: #64b5f6;
+}
+
+h4 {
+	color: #ec407a;
 }
 
 .form-header {

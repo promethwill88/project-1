@@ -24,9 +24,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=League+Script|Scope+One|Open+Sans" rel="stylesheet">
           
-    <!-- APPLICATION SCRIPTS -->
-    <script src="/scripts/app.js"></script>
+    
   </head>
+  
   <body>
 
     <div class="jumbotron">
@@ -36,15 +36,16 @@
           <div class="col m1"><span id="name">airpnp</span></div>
         </div>
         <div class="row" id="titletext">
-        <h3><span>Airpnp</span> Find unique restrooms and experience peeing like a local.</h3>
+          <h3><span>Airpnp</span> Find unique restrooms and experience peeing like a local.</h3>
         </div>
-
-
 
         <div class="row" id="neighborhood-search">
           <div class="container">
             <div class="col s12">        
             <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Search by Neighborhood">
+            <div class="col s10"> 
+            </div>
+            <a id="reload" class="btn-floating btn-large waves-effect waves-light blue lighten-2"><i class="material-icons">youtube_searched_for</i></a>
             </div>
           </div>
         </div>
@@ -56,7 +57,10 @@
 
 <!--Submit Form-->    
     <div class="form-header">
-
+        <div class=row id="formtitle">
+          <div class="col s1"><i class="medium material-icons" id="invertcolors">invert_colors</i></div>
+          <div class="col s5"><h4>Share a new place</h4></div>
+        </div>
     </div>
    
    <section id="restroom-form">         
@@ -77,7 +81,7 @@
           </div>
 
           <div class="form-group"><i class="small material-icons prefix">loyalty</i> 
-            <input placeholder="cleanliness (0 - 10)" id="rest-clean" name="cleanliness" type="text" class="form-input">
+            <input placeholder="cleanliness (0 - 5)" id="rest-clean" name="cleanliness" type="text" class="form-input">
           </div>
 
           <div class="form-group"><i class="small material-icons prefix">business</i> 
@@ -98,26 +102,28 @@
         </form>
         
       </div>
-
     </section>
 
   <footer class="page-footer blue lighten-2">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">About airpnp</h5>
-                <p class="white-text">We are a pair of like-minded individuals who strive to provide the world with an easier tool to look for spots to pee.</p>
-                <p class="white-text">~ W and S</p>
-                <img id="smalllogo" src="../images/tolietlogo.png" />
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2018 airpnp
-            </div>
-          </div>
-        </footer>
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About Airpnp</h5>
+          <p class="white-text">We are a pair of like-minded individuals who strive to provide the world with an easier tool to look for spots to pee.</p>
+          <p class="white-text">~ W and S</p>
+          <img id="smalllogo" src="../images/tolietlogo.png" />
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2018 Airpnp
+      </div>
+    </div>
+    </footer>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="/scripts/app.js"></script>
   
   </body>
 
