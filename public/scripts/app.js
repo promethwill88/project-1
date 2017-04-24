@@ -203,29 +203,34 @@ $(document).ready(function(e) {
 
   $.ajax({
     method: 'GET',
-    url: '/api/restroom',
+    url: '/api/review',
     success: onSuccess,
     error: onError
   });
 
-  // when the form is submited, create new review
+  // when the button is clicked, create new comment and save to db
   $('#comment').on('click', function(e) {
-    console.log('submit worked!');
-    e.preventDefault();
-    var formReview = $(this).serialize();
-    $.post('/api/review', formReview, function(review) {
-      console.log("formReview"); //render server's response
-      renderBathroom(review);
+    var text = $('input[name="comment"]').val();
+    console.log('entered text: ' + text);
+    $.post('/api/review', text, function(review) {
+      console.log('saved to server: ' + text); //render server's response
     });
     $(this).trigger("reset");
-});
+  });
 
-  function onSuccess(review) {
+  function onSuccess(e) {
       console.log('Success!')
   };
 
-  function onError(review) {
+  function onError(e) {
     console.log('Error!')
   };
-  
+
+
+
+
+
+
+
+
 });
