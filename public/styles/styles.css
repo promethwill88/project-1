@@ -1,6 +1,6 @@
 .jumbotron {
-    padding-bottom: 200px;
-    background: url(../images/background.jpeg) no-repeat center center fixed; 
+    padding-bottom: 50px;
+    background: url(../images/background1.jpg) no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -12,7 +12,7 @@
 }
 
 #neighborhood-search {
-    padding-top: 40px;
+    padding-top: 10px;
 
 }
 
@@ -65,7 +65,7 @@ img {
 }
 
 #invertcolors{
-	color: #6d4c41;
+	color: #64b5f6;
 }
 
 h4 {
