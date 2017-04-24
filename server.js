@@ -34,6 +34,8 @@ app.get('/api/restroom/:restroomId', controllers.restroom.show);
 app.post('/api/restroom', controllers.restroom.create);
 app.delete('/api/restroom/:restroomId', controllers.restroom.destroy);
 app.put('/api/restroom/:restroomId', controllers.restroom.update);
+app.get('/api/review', controllers.restroomReview.index);
+app.post('/api/review', controllers.restroomReview.create);
 
 // app.post('/api/restroom/:restroomId/review', controllers.restroomReview.create);
 

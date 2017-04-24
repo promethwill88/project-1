@@ -201,4 +201,31 @@ $(document).ready(function(e) {
       $('#restrooms').prepend(bathroomAppend);
   }
 
+  $.ajax({
+    method: 'GET',
+    url: '/api/restroom',
+    success: onSuccess,
+    error: onError
+  });
+
+  // when the form is submited, create new review
+  $('#comment').on('click', function(e) {
+    console.log('submit worked!');
+    e.preventDefault();
+    var formReview = $(this).serialize();
+    $.post('/api/review', formReview, function(review) {
+      console.log("formReview"); //render server's response
+      renderBathroom(review);
+    });
+    $(this).trigger("reset");
+});
+
+  function onSuccess(review) {
+      console.log('Success!')
+  };
+
+  function onError(review) {
+    console.log('Error!')
+  };
+  
 });
