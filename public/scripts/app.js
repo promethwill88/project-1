@@ -86,7 +86,6 @@ $(document).ready(function() {
     var type = $restroomRow.find('p.type').text();
     $restroomRow.find('p.type').html('<input class="edit-type" value="' + type + '"></input>');
     var review = $restroomRow.find('p.review').text();
-    console.log(review);
     $restroomRow.find('p.review').html('<input class="edit-review" value="' + review + '"></input>');
   }
 
@@ -115,7 +114,22 @@ $(document).ready(function() {
    var restroomId = data._id;
    $('[data-restid=' + restroomId + ']').remove();
    renderBathroom(data);
+
+
   }
+
+  // function reviewUpdatd(e) {
+  //   e.preventDefault();
+  //   var restroomId = $(this).parents('.row-restroom').data('restid');
+  //   var dataToPost = {
+  //     comment: $('#rest-review').val()
+  //   }
+  //   var reviewPostToUrl = '/api/restroom/' + restroomId + '/review';
+  //   $.post(reviewPostToUrl, dataToPost, function(data) {
+  //     $.get('/api/restroom/' + restroomId + ']').remove();
+  //     renderBathroom(data);
+  //   });
+  // };
 
   function handleDeleteRestroomClick(e) {
     var restroomId = $(this).parents('.row-restroom').data('restid');
@@ -157,9 +171,14 @@ $(document).ready(function() {
   	$('.list').text('failed to load restrooms');
   };
 
+  // function renderReview(review) {
+  //   return `<span>&ndash; ${review.comment} &ndash;</span>`
+  // }
+
 
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
+    // json.reviewHtml = json.reviews;
     var bathroomAppend = (`
       <div class="container">
         <div class="row-restroom" data-restid="${json._id}">            
@@ -176,6 +195,7 @@ $(document).ready(function() {
               <p class="neighborhood"><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
               <p class="type"><i class="tiny material-icons prefix">info</i> ${json.type}</p>
               <p class="review"><i class="tiny material-icons prefix">stars</i> ${json.review}</p>
+    
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">import_export</i>update</a>  
               <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
               <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">Save</i>Save</a>

@@ -9,7 +9,7 @@ var RestroomSchema = new Schema({
     type: String,
     cleanliness: Number,
     neighborhood: String,
-    review: [Review.schema]
+    review: String
 });
 
 

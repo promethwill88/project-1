@@ -1,7 +1,7 @@
 // RestroomReviewController
 var db = require('../models');
 
-// POST '/api/restroom/:restroomId/songs'
+// POST '/api/restroom/:restroomId/review'
 function create(req, res) {
   db.Review.findById(req.params.restroomId, function(err, foundReview) {
     console.log(req.body);
