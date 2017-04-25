@@ -165,7 +165,7 @@ $(document).ready(function(e) {
               <p id="location"><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
               <p id="cleanliness"><i class="tiny material-icons prefix" id="cleanliness">spa</i> Score: ${json.cleanliness}</p>
             </div>
-            <div class="card-reveal yellow lighten-4">
+            <div class="card-reveal white">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
               <i class="tiny material-icons prefix">business</i><p class="neighborhood"> ${json.neighborhood}</p>
               <i class="tiny material-icons prefix">info</i><p class="type"> ${json.type}</p>

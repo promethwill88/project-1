@@ -1,5 +1,5 @@
 .jumbotron {
-    padding-bottom: 50px;
+    padding-bottom: 100px;
     background: url(../images/background1.jpg) no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -24,7 +24,6 @@
     padding-top: 40px;
     padding-left: 80px;
 }
-
 
 h3 {
     font-family: 'Open Sans', sans-serif;
@@ -79,12 +78,7 @@ img {
 
 h4 {
 	color: #ec407a;
-}
-
-.form-header {
-    padding-left: 230px;
-    padding-top: 50px;
-
+	padding-bottom: 20px;
 }
 
 footer {
@@ -98,7 +92,16 @@ footer {
 
 }
 
+#suggestion {
+	padding-top: 30px;
+}
+
 #smalllogo {
     height: 40px;
     width: 40px;
+}
+
+.topform {
+	padding-top: 40px;
+	padding-bottom: 40px;
 }

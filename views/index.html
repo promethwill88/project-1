@@ -54,57 +54,80 @@
       </div>
     </div>
 
+  <div class="topform">
+      <section id="restroom-form">         
+        <div class="container">
+          <!-- <div class="row"> -->
+            <div class="col s12">
+
+            <h4>Share a new restroom</h4> 
+              
+              <form>      
+                
+                <div class="row">
+                  <div class="col s6">
+                    <div class="form-group"><i class="small material-icons prefix">store</i>
+                      <input placeholder="business name" id="rest-name" name="locationName" type="text" class="form-input">
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <div class="form-group"><i class="small material-icons prefix">location_on</i>
+                      <input placeholder="address" id="rest-loc" name="location" type="text" class="form-input">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s6">
+                    <div class="form-group"><i class="small material-icons prefix">info</i>
+                      <input placeholder="type" id="rest-type" name="type" type="text" class="form-input">
+                    </div>
+                  </div>
+                  <div class="col s6">
+                    <div class="form-group"><i class="small material-icons prefix">spa</i> 
+                      <input placeholder="cleanliness (0 - 5)" id="rest-clean" name="cleanliness" type="text" class="form-input">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s6">
+                    <div class="form-group"><i class="small material-icons prefix">business</i> 
+                      <input placeholder="neighborhood" id="rest-hood" name="neighborhood" type="text" class="form-input">
+                    </div>
+                  </div>
+                  <div class="col s6">
+                      <div class="form-group"><i class="small material-icons prefix">mood</i> 
+                        <input placeholder="enter review" id="rest-review" name="review" type="text" class="form-input" data-length="60">
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col s6">
+                    <div class="form-group">
+                      <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Save Restroom<i class="material-icons right">send</i></button>
+                    </div>
+                  </div>
+                </div>
+              
+              </form>
+            
+            </div>
+          <!-- </div> -->
+        </div>
+      </section>
+  </div>
 <!--Seed data container-->
 <div id="restrooms"></div>
 
 <!--Submit Form-->    
-    <div class="form-header">
+    <!-- <div class="form-header">
         <div class=row id="formtitle">
           <div class="col s1"><i class="medium material-icons" id="invertcolors">invert_colors</i></div>
           <div class="col s5"><h4>Share a new place</h4></div>
         </div>
-    </div>
-   
-   <section id="restroom-form">         
-      <div class="container">
-            
-        <form>      
-          
-          <div class="form-group"><i class="small material-icons prefix">store</i>
-            <input placeholder="business name" id="rest-name" name="locationName" type="text" class="form-input">
-          </div>
-
-          <div class="form-group"><i class="small material-icons prefix">location_on</i>
-            <input placeholder="address" id="rest-loc" name="location" type="text" class="form-input">
-          </div>
-
-          <div class="form-group"><i class="small material-icons prefix">info</i>
-            <input placeholder="type" id="rest-type" name="type" type="text" class="form-input">
-          </div>
-
-          <div class="form-group"><i class="small material-icons prefix">spa</i> 
-            <input placeholder="cleanliness (0 - 5)" id="rest-clean" name="cleanliness" type="text" class="form-input">
-          </div>
-
-          <div class="form-group"><i class="small material-icons prefix">business</i> 
-            <input placeholder="neighborhood" id="rest-hood" name="neighborhood" type="text" class="form-input">
-          </div>
-
-          <div class="form-group"><i class="small material-icons prefix">mood</i> 
-              <input placeholder="enter review" id="rest-review" name="review" type="text" class="form-input" data-length="60">
-          </div>
-
-          <div class="form-group">
-            <div class="col m4">
-            <br>
-              <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Save Restroom<i class="material-icons right">send</i></button>
-            </div> 
-          </div>
-
-        </form>
-        
-      </div>
-    </section>
+    </div> -->
 
   <footer class="page-footer blue lighten-2">
     <div class="container">
@@ -115,22 +138,21 @@
           <p class="white-text">~ W and S</p>
           <img id="smalllogo" src="../images/tolietlogo.png" />
         </div>
-        <div class="col l6 s12">
         
-        <section id="comment-form">
-        
-        <form>
-          <div class="form-review">
-          <input placeholder="Please write a comment about our app" id="review-comment" name="comment" type="text" class="form-input">
-          <button id="comment" class="btn waves-effect waves-light blue lighten-2" type="submit" name="action">Submit<i class="material-icons right">send</i></button>
-          </div>
-        </form>
-          
-        </section>
-        
+        <div class="col l6 s12" id="suggestion">
+          <h6 class="white-text">Suggestion Box</h6>
+          <section id="comment-form">
+            <form>
+              <div class="form-review">
+                <input placeholder="Please leave a comment about our app" id="review-comment" name="comment" type="text" class="form-input">
+                <button id="comment" class="btn waves-effect waves-light teal" type="submit" name="action">Drop<i class="material-icons right">cake</i></button>
+              </div>
+            </form>
+          </section>
         </div>
       </div>
     </div>
+    
     <div class="footer-copyright">
       <div class="container">
       © 2018 Airpnp
