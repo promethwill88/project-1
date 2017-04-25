@@ -163,13 +163,13 @@ $(document).ready(function(e) {
             <div class="card-content">
               <span id="locationName" class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix" id="storeicon">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
               <p id="location"><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
-              <p id="cleanliness"><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
+              <p id="cleanliness"><i class="tiny material-icons prefix">spa</i> Score: ${json.cleanliness}</p>
             </div>
             <div class="card-reveal yellow lighten-4">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <i class="tiny material-icons prefix">business</i><p class="neighborhood"> ${json.neighborhood}</p>
-              <i class="tiny material-icons prefix">info</i><p class="type"> ${json.type}</p>
-              <i class="tiny material-icons prefix">stars</i><p class="review"> ${json.review}</p>
+              <p class="neighborhood"><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
+              <p class="type"><i class="tiny material-icons prefix">info</i> Type: ${json.type}</p>
+              <p class="review"><i class="tiny material-icons prefix">mood</i> ${json.review}</p>
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">mode_edit</i>update</a>  
               <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
               <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">play_for_work</i>Save</a>
