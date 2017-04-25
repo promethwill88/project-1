@@ -134,7 +134,6 @@ var restroom_list = [
   } 
 ];
 
-
 db.Restroom.remove({}, function(err, restrooms){
   console.log('removed all restrooms')
   db.Restroom.create(restroom_list, function(err, restrooms){
@@ -145,46 +144,33 @@ db.Restroom.remove({}, function(err, restrooms){
     console.log("created", restrooms.length, "restrooms");
     process.exit();
   });
-
 });
 
 // var review_list = [
 //   {
-//     comment: "Awful atmosphere. I couldn't let loose."
+//     comment: "Wonderful site, I can finally find a restroom!"
 //   },
 //   {
-//     comment: "Free to use, didn't need to buy anything. Could use a bit of redecorating."
+//     comment: "Free to use, hope it doesn't involve a subscription in the future."
 //   },
 //   {
-//     comment: "Plenty of tp. A joy to use. Friendly staff."
+//     comment: "Could use a bit of polishing..."
 //   },
 //   {
-//     comment: "I rather not return here. But if I was close to exploding, I wouldn't say no."
+//     comment: "I rather not use this. There could be better options out there, I haven't checked."
 //   }
 // ];
 
+// Seeding Review Model
 
-  // restroom_list.forEach(function(restroom) {
-  //   restroom.review = review_list;
-  //   console.log(restroom);
-  // });
-
-
-
-// db.Restroom.remove({}, function(err, restrooms){
-
-//  db.Restroom.create(restroom_list, function(err, createdRestrooms){
-
-//    if (err) { return console.log('ERROR', err); }
-
-//    createdRestrooms.forEach(function stuffFullofReviews(restroom){
-//      db.Review.create(review_list, function(err, createdReviews){
-//        if (err) { return console.log('ERROR', err); }
-//        restroom.review=createdReviews;
-//        restroom.save(function(err, succ){
-//          console.log("Added review");
-//        });//closes save function
-//      });//closes review create function
-//    }); //closes forEach loop
-//  });//closes album create function
-// }); //closes album remove function
+// db.Review.remove({}, function(err, reviews){
+//   console.log('removed all reviews')
+//   db.Review.create(review_list, function(err, reviews){
+//     if (err) { 
+//       return console.log('ERROR', err); 
+//     }
+//     console.log("all restrooms:", reviews);
+//     console.log("created", reviews.length, "reviews");
+//     process.exit();
+//   });
+// });

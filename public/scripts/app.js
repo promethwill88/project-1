@@ -1,4 +1,3 @@
-// CLIENT-SIDE JS
 $(document).ready(function(e) {
   
   // Global variable to carry all bathroom data
@@ -52,7 +51,7 @@ $(document).ready(function(e) {
     location = location;
   });
 
-  // AJAX call for restrooms for personal API
+  // MODEL #1 : RESTROOM (READ)
   $.ajax({
     method: 'GET',
     url: '/api/restroom',
@@ -60,20 +59,31 @@ $(document).ready(function(e) {
     error: handleError
   });
 
-  // when the form is submited, create new restroom
+  function renderMultipleRestrooms(restrooms) {
+    allMyRestrooms = restrooms;
+    restrooms.forEach(function(restroom) {
+      renderBathroom(restroom);  
+    });
+  };
+
+  function handleError(e) {
+    console.log('error!!!!');
+    $('.list').text('failed to load restrooms');
+  };
+
+  // MODEL #1 : RESTROOM (CREATE)
   $('#restroom-form form').on('submit', function(e) {
     console.log('submit worked!');
     e.preventDefault();
     var formData = $(this).serialize();
     $.post('/api/restroom', formData, function(restroom) {
-      console.log("formdata"); //render server's response
       renderBathroom(restroom);
     });
     $(this).trigger("reset");
   });
-  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
+
+  // MODEL #1 : RESTROOM (UPDATE / SAVE)
   $('#restrooms').on('click', '#updatebutton', handleUpdateRestroomClick);
-  $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
 
   function handleUpdateRestroomClick(e) {
     var $restroomRow = $(this).closest('.row-restroom');
@@ -86,6 +96,8 @@ $(document).ready(function(e) {
     var review = $restroomRow.find('p.review').text();
     $restroomRow.find('p.review').html('<input class="edit-review" value="' + review + '"></input>');
   }
+
+  $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
 
   function handleSaveRestroomClick(e) {
     var restroomId = $(this).parents('.row-restroom').data('restid');
@@ -109,32 +121,18 @@ $(document).ready(function(e) {
    var restroomId = data._id;
    $('[data-restid=' + restroomId + ']').remove();
    renderBathroom(data);
-
-
   }
 
-  // function reviewUpdatd(e) {
-  //   e.preventDefault();
-  //   var restroomId = $(this).parents('.row-restroom').data('restid');
-  //   var dataToPost = {
-  //     comment: $('#rest-review').val()
-  //   }
-  //   var reviewPostToUrl = '/api/restroom/' + restroomId + '/review';
-  //   $.post(reviewPostToUrl, dataToPost, function(data) {
-  //     $.get('/api/restroom/' + restroomId + ']').remove();
-  //     renderBathroom(data);
-  //   });
-  // };
+// MODEL #1 : REVIEW (DELETE)
+  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
 
   function handleDeleteRestroomClick(e) {
     var restroomId = $(this).parents('.row-restroom').data('restid');
-    console.log(restroomId);
     $.ajax({
       url: '/api/restroom/' + restroomId,
       method: 'DELETE',
       success: handleDeleteRestroomSuccess
     });
-
   };
 
   function handleDeleteRestroomSuccess(json) {
@@ -142,34 +140,16 @@ $(document).ready(function(e) {
     $('div[data-restid=' + deletedRestroomId + ']').remove();
   };
 
-  function renderMultipleRestrooms(restrooms) {
-    allMyRestrooms = restrooms;
-  	restrooms.forEach(function(restroom) {
-      renderBathroom(restroom);  
+ // Function for displaying filtered by Neighborhoods
+  function renderFilteredRestrooms(filter) {
+    // Clear page of results
+    $('#restrooms').empty();
+    allMyRestrooms.forEach(function(restroom) {
+    if(restroom.neighborhood === filter){
+      renderBathroom(restroom);
+    }   
     });
   };
-
-
- // function for displaying filtered by name and/or neighborhoods
-    function renderFilteredRestrooms(filter) {
-      // Clear page of results
-      $('#restrooms').empty();
-      allMyRestrooms.forEach(function(restroom) {
-      if(restroom.neighborhood === filter){
-        renderBathroom(restroom);
-      }   
-      });
-    };
-
-  function handleError(e) {
-  	console.log('error!!!!');
-  	$('.list').text('failed to load restrooms');
-  };
-
-  // function renderReview(review) {
-  //   return `<span>&ndash; ${review.comment} &ndash;</span>`
-  // }
-
 
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
@@ -177,28 +157,37 @@ $(document).ready(function(e) {
     var bathroomAppend = (`
       <div class="container">
         <div class="row-restroom" data-restid="${json._id}">            
-          <div class="small card blue lighten-5">
+          <div class="small card blue lighten-4">
             <div class="card-image waves-effect waves-block waves-light">
             </div>
             <div class="card-content">
               <span id="locationName" class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix" id="storeicon">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
               <p id="location"><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
-              <p id="cleanliness"><i class="tiny material-icons prefix">loyalty</i> ${json.cleanliness}</p>
+              <p id="cleanliness"><i class="tiny material-icons prefix" id="cleanliness">spa</i> Score: ${json.cleanliness}</p>
             </div>
-            <div class="card-reveal yellow lighten-4">
+            <div class="card-reveal white">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
               <i class="tiny material-icons prefix">business</i><p class="neighborhood"> ${json.neighborhood}</p>
               <i class="tiny material-icons prefix">info</i><p class="type"> ${json.type}</p>
-              <i class="tiny material-icons prefix">stars</i><p class="review"> ${json.review}</p>
+              <i class="tiny material-icons prefix">mood</i><p class="review"> ${json.review}</p>
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">mode_edit</i>update</a>  
-              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
               <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">play_for_work</i>Save</a>
+              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light pink lighten-1"><i class="material-icons left">delete</i>Delete</a>
             </div>
           </div>
         </div>
       </div>
-      `); 
-      $('#restrooms').prepend(bathroomAppend);
+    `); 
+      
+    $('#restrooms').prepend(bathroomAppend);
   }
+
+// MODEL #2 : REVIEW
+  $('#comment-form form').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    $.post('/api/review', formData);
+    $(this).trigger("reset");
+  });
 
 });

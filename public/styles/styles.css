@@ -1,5 +1,5 @@
 .jumbotron {
-    padding-bottom: 50px;
+    padding-bottom: 100px;
     background: url(../images/background1.jpg) no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -17,7 +17,7 @@
 }
 
 #reload {
-	margin-top: 10px;
+	margin-top: -5px;
 }
 
 #titletext {
@@ -30,8 +30,16 @@ h3 {
     color: #ffffff;
 }
 
-#storeicon{
+#storeicon {
 	color: #ec407a;
+}
+
+#cleanliness {
+	color: #009688;
+}
+
+.card-content {
+	background-color: #e3f2fd; 
 }
 
 h3 span {
@@ -39,20 +47,20 @@ h3 span {
 }
 
 img {
-    height: 70px;
-    width: 70px;
+    height: 90px;
+    width: 90px;
 }
 
 #name {
     font-family: 'League Script', cursive;
-    font-size: 50px;
+    font-size: 70px;
     color: #64b5f6;
-    padding-left: 20px;
+    padding-left: 30px;
     font-weight: 700;
 }
 
 #autocomplete-input {
-    background-color: white;
+    background-color: #ffffff;
     padding-left: 10px;
     border-radius: 10px;
 
@@ -70,19 +78,30 @@ img {
 
 h4 {
 	color: #ec407a;
-}
-
-.form-header {
-    padding-left: 230px;
-    padding-top: 50px;
-
+	padding-bottom: 20px;
 }
 
 footer {
     margin-top: 100px;
 }
 
+#review-comment {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding-left: 10px;
+
+}
+
+#suggestion {
+	padding-top: 30px;
+}
+
 #smalllogo {
     height: 40px;
     width: 40px;
+}
+
+.topform {
+	padding-top: 40px;
+	padding-bottom: 40px;
 }

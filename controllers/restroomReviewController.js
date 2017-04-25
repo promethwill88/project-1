@@ -1,19 +1,28 @@
 // RestroomReviewController
 var db = require('../models');
 
-// POST '/api/restroom/:restroomId/review'
-function create(req, res) {
-  db.Review.findById(req.params.restroomId, function(err, foundReview) {
-    console.log(req.body);
-    var newReview = new db.Review(req.body);
-    foundReview.songs.push(newReview);
-    foundReview.save(function(err, savedReview) {
-      console.log('newReview created: ', newReview);
-      res.json(newReview);
-    });
+// GET /api/review
+function index(req, res) {
+// send back all restrooms as JSON
+  db.Review.find({}, function(err, allReviews){
+    res.json(allReviews)
   });
-}
+};
+
+// POST /api/review
+function create(req, res) {
+  console.log('body', req.body);
+  //create site review based on request body and send it back as JSON
+  var comment = req.body.comment;
+  db.Review.create(req.body, function(err, review){
+    if(err){ 
+      throw err; 
+    }
+    res.json(review);
+  });
+};
 
 module.exports = {
+  index: index,
   create: create
 };
