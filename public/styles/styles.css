@@ -47,15 +47,15 @@ h3 span {
 }
 
 img {
-    height: 70px;
-    width: 70px;
+    height: 90px;
+    width: 90px;
 }
 
 #name {
     font-family: 'League Script', cursive;
-    font-size: 50px;
+    font-size: 70px;
     color: #64b5f6;
-    padding-left: 20px;
+    padding-left: 30px;
     font-weight: 700;
 }
 
