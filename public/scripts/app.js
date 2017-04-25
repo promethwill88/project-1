@@ -201,36 +201,16 @@ $(document).ready(function(e) {
       $('#restrooms').prepend(bathroomAppend);
   }
 
-  $.ajax({
-    method: 'GET',
-    url: '/api/review',
-    success: onSuccess,
-    error: onError
-  });
-
   // when the button is clicked, create new comment and save to db
-  $('#comment').on('click', function(e) {
-    var text = $('input[name="comment"]').val();
-    console.log('entered text: ' + text);
-    $.post('/api/review', text, function(review) {
-      console.log('saved to server: ' + text); //render server's response
+  $('#comment-form form').on('submit', function(e) {
+    e.preventDefault();
+    var formData = $(this).serialize();
+    console.log('entered input: ' + formData);
+    $.post('/api/review', formData, function(e) {
+      console.log('submitted data: ' + formData); //render server's response
     });
     $(this).trigger("reset");
   });
-
-  function onSuccess(e) {
-      console.log('Success!')
-  };
-
-  function onError(e) {
-    console.log('Error!')
-  };
-
-
-
-
-
-
 
 
 });
