@@ -157,22 +157,22 @@ $(document).ready(function(e) {
     var bathroomAppend = (`
       <div class="container">
         <div class="row-restroom" data-restid="${json._id}">            
-          <div class="small card blue lighten-5">
+          <div class="small card blue lighten-4">
             <div class="card-image waves-effect waves-block waves-light">
             </div>
             <div class="card-content">
               <span id="locationName" class="card-title activator grey-text text-darken-4"><i class="small material-icons prefix" id="storeicon">store</i> ${json.locationName}<i class="material-icons right">more_vert</i></span>
               <p id="location"><i class="tiny material-icons prefix">location_on</i> ${json.location}</p>
-              <p id="cleanliness"><i class="tiny material-icons prefix">spa</i> Score: ${json.cleanliness}</p>
+              <p id="cleanliness"><i class="tiny material-icons prefix" id="cleanliness">spa</i> Score: ${json.cleanliness}</p>
             </div>
             <div class="card-reveal yellow lighten-4">
               <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-              <p class="neighborhood"><i class="tiny material-icons prefix">business</i> ${json.neighborhood}</p>
-              <p class="type"><i class="tiny material-icons prefix">info</i> Type: ${json.type}</p>
-              <p class="review"><i class="tiny material-icons prefix">mood</i> ${json.review}</p>
+              <i class="tiny material-icons prefix">business</i><p class="neighborhood"> ${json.neighborhood}</p>
+              <i class="tiny material-icons prefix">info</i><p class="type"> ${json.type}</p>
+              <i class="tiny material-icons prefix">mood</i><p class="review"> ${json.review}</p>
               <a id="updatebutton" name="updatebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">mode_edit</i>update</a>  
-              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">delete</i>Delete</a>
               <a id="savebutton" name="savebutton" class="btn waves-effect waves-light blue lighten-2"><i class="material-icons left">play_for_work</i>Save</a>
+              <a id="deletebutton" name="deletebutton" class="btn waves-effect waves-light pink lighten-1"><i class="material-icons left">delete</i>Delete</a>
             </div>
           </div>
         </div>

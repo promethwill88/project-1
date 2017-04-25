@@ -31,8 +31,16 @@ h3 {
     color: #ffffff;
 }
 
-#storeicon{
+#storeicon {
 	color: #ec407a;
+}
+
+#cleanliness {
+	color: #009688;
+}
+
+.card-content {
+	background-color: #e3f2fd; 
 }
 
 h3 span {
@@ -53,7 +61,7 @@ img {
 }
 
 #autocomplete-input {
-    background-color: white;
+    background-color: #ffffff;
     padding-left: 10px;
     border-radius: 10px;
 
@@ -81,6 +89,13 @@ h4 {
 
 footer {
     margin-top: 100px;
+}
+
+#review-comment {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding-left: 10px;
+
 }
 
 #smalllogo {
