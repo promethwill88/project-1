@@ -1,4 +1,3 @@
-// CLIENT-SIDE JS
 $(document).ready(function(e) {
   
   // Global variable to carry all bathroom data
@@ -52,7 +51,7 @@ $(document).ready(function(e) {
     location = location;
   });
 
-  // AJAX call for restrooms for personal API
+  // MODEL #1 : RESTROOM (READ)
   $.ajax({
     method: 'GET',
     url: '/api/restroom',
@@ -60,20 +59,31 @@ $(document).ready(function(e) {
     error: handleError
   });
 
-  // when the form is submited, create new restroom
+  function renderMultipleRestrooms(restrooms) {
+    allMyRestrooms = restrooms;
+    restrooms.forEach(function(restroom) {
+      renderBathroom(restroom);  
+    });
+  };
+
+  function handleError(e) {
+    console.log('error!!!!');
+    $('.list').text('failed to load restrooms');
+  };
+
+  // MODEL #1 : RESTROOM (CREATE)
   $('#restroom-form form').on('submit', function(e) {
     console.log('submit worked!');
     e.preventDefault();
     var formData = $(this).serialize();
     $.post('/api/restroom', formData, function(restroom) {
-      console.log("formdata"); //render server's response
       renderBathroom(restroom);
     });
     $(this).trigger("reset");
   });
-  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
+
+  // MODEL #1 : RESTROOM (UPDATE / SAVE)
   $('#restrooms').on('click', '#updatebutton', handleUpdateRestroomClick);
-  $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
 
   function handleUpdateRestroomClick(e) {
     var $restroomRow = $(this).closest('.row-restroom');
@@ -86,6 +96,8 @@ $(document).ready(function(e) {
     var review = $restroomRow.find('p.review').text();
     $restroomRow.find('p.review').html('<input class="edit-review" value="' + review + '"></input>');
   }
+
+  $('#restrooms').on('click', '#savebutton', handleSaveRestroomClick);
 
   function handleSaveRestroomClick(e) {
     var restroomId = $(this).parents('.row-restroom').data('restid');
@@ -109,32 +121,18 @@ $(document).ready(function(e) {
    var restroomId = data._id;
    $('[data-restid=' + restroomId + ']').remove();
    renderBathroom(data);
-
-
   }
 
-  // function reviewUpdatd(e) {
-  //   e.preventDefault();
-  //   var restroomId = $(this).parents('.row-restroom').data('restid');
-  //   var dataToPost = {
-  //     comment: $('#rest-review').val()
-  //   }
-  //   var reviewPostToUrl = '/api/restroom/' + restroomId + '/review';
-  //   $.post(reviewPostToUrl, dataToPost, function(data) {
-  //     $.get('/api/restroom/' + restroomId + ']').remove();
-  //     renderBathroom(data);
-  //   });
-  // };
+// MODEL #1 : REVIEW (DELETE)
+  $('#restrooms').on('click', '#deletebutton', handleDeleteRestroomClick);
 
   function handleDeleteRestroomClick(e) {
     var restroomId = $(this).parents('.row-restroom').data('restid');
-    console.log(restroomId);
     $.ajax({
       url: '/api/restroom/' + restroomId,
       method: 'DELETE',
       success: handleDeleteRestroomSuccess
     });
-
   };
 
   function handleDeleteRestroomSuccess(json) {
@@ -142,34 +140,16 @@ $(document).ready(function(e) {
     $('div[data-restid=' + deletedRestroomId + ']').remove();
   };
 
-  function renderMultipleRestrooms(restrooms) {
-    allMyRestrooms = restrooms;
-  	restrooms.forEach(function(restroom) {
-      renderBathroom(restroom);  
+ // Function for displaying filtered by Neighborhoods
+  function renderFilteredRestrooms(filter) {
+    // Clear page of results
+    $('#restrooms').empty();
+    allMyRestrooms.forEach(function(restroom) {
+    if(restroom.neighborhood === filter){
+      renderBathroom(restroom);
+    }   
     });
   };
-
-
- // function for displaying filtered by name and/or neighborhoods
-    function renderFilteredRestrooms(filter) {
-      // Clear page of results
-      $('#restrooms').empty();
-      allMyRestrooms.forEach(function(restroom) {
-      if(restroom.neighborhood === filter){
-        renderBathroom(restroom);
-      }   
-      });
-    };
-
-  function handleError(e) {
-  	console.log('error!!!!');
-  	$('.list').text('failed to load restrooms');
-  };
-
-  // function renderReview(review) {
-  //   return `<span>&ndash; ${review.comment} &ndash;</span>`
-  // }
-
 
   function renderBathroom(json) {
     console.log('populating bathrooms', json);
@@ -197,20 +177,17 @@ $(document).ready(function(e) {
           </div>
         </div>
       </div>
-      `); 
-      $('#restrooms').prepend(bathroomAppend);
+    `); 
+      
+    $('#restrooms').prepend(bathroomAppend);
   }
 
-  // when the button is clicked, create new comment and save to db
+// MODEL #2 : REVIEW
   $('#comment-form form').on('submit', function(e) {
     e.preventDefault();
     var formData = $(this).serialize();
-    console.log('entered input: ' + formData);
-    $.post('/api/review', formData, function(e) {
-      console.log('submitted data: ' + formData); //render server's response
-    });
+    $.post('/api/review', formData);
     $(this).trigger("reset");
   });
-
 
 });
